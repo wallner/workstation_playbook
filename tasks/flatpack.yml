@@ -1,0 +1,21 @@
+---
+- name: Add the flathub flatpak repository remote to the user installation
+  become: yes
+  become_user: "{{ user }}"
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+- name: Install a few flatpacks
+  become: yes
+  become_user: "{{ user }}"
+  community.general.flatpak:
+    remote=flathub name={{item}} state=present method=user
+  with_items:
+  - com.slack.Slack
+  - com.skype.Client
+  - org.signal.Signal
+
+

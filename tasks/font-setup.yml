@@ -1,0 +1,45 @@
+---
+- name: install freetype-freeworld
+  dnf: name=freetype-freeworld state=present
+- name: install fonts
+  dnf: name={{item}} state=present
+  with_items:
+      - terminus-fonts-console
+      - terminus-fonts
+      - fontawesome-fonts
+      - fontawesome-fonts-web
+- name: install powerline
+  dnf:
+    state: present
+    name:
+    - powerline
+    - powerline-fonts
+    - tmux-powerline
+    - vim-powerline
+- name: activate lcd default filter
+  lineinfile: 'dest="~/.Xresources" line="Xft.lcdfilter: lcddefault" create=yes'
+  become: yes
+  become_user: "{{ user }}"
+- name: set font hinting to slight
+  raw: gsettings set org.gnome.settings-daemon.plugins.xsettings hinting slight
+  become: yes
+  become_user: "{{ user }}"
+- name: set antialiasing to rgba
+  raw: gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing rgba
+  become: yes
+  become_user: "{{ user }}"
+- name: install adwaita qt themes
+  dnf:
+    state: present
+    name:
+      - adwaita-qt
+      - adwaita-qt5
+      - adwaita-qt4
+- name: disable gnome keyboard shortcuts that conflict with intellij
+  raw: gsettings set org.gnome.desktop.wm.keybindings {{item}} "[]"
+  with_items:
+      - panel-main-menu
+      - switch-to-workspace-left
+      - switch-to-workspace-right
+  become: yes
+  become_user: "{{ user }}"

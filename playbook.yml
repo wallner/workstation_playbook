@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  user: wallner
+  vars_files:
+    - variables/application-versions.yml
+    - variables/configuration.yml
+  tasks:
+    - name: install deps for ansible modules
+      raw: dnf install -yq python-dnf
+    - include: tasks/repositories.yml
+    - include: tasks/packages.yml
+    - include: tasks/font-setup.yml
+    - include: tasks/java.yml
+    - include: tasks/flatpack.yml
+    - include: tasks/dotfiles.yml
+    - include: tasks/sysctl.yml
+    - name: set the hostname
+      hostname: name={{ hostname }}
+    - name: change user shell to zsh
+      user: name="{{ user }}" shell=/bin/zsh

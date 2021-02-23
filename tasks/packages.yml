@@ -1,0 +1,187 @@
+---
+- name: upgrade all packages
+  dnf: name=* state=latest
+- name: install gnome-tweak-tool
+  dnf: name=gnome-tweak-tool state=present
+- name: install rfkill
+  dnf: name=rfkill state=present
+- name: install lshw
+  dnf: name=lshw state=present
+- name: install insync
+  dnf: name=insync state=present
+- name: install dropbox
+  dnf: name=dropbox state=present
+- name: install keepassxc
+  dnf: name=keepassxc state=present
+- name: install setup tool for QT5
+  dnf: state=present name=qt5ct
+- name: install browsers
+  dnf:
+    state: present
+    name:
+      - chromium-freeworld
+      - epiphany
+      - google-chrome-stable
+- name: install steam
+  dnf: name=steam state=present
+# Desktop working envronment
+- name: install gnome-shell extensions
+  dnf:
+    state: present
+    name:
+      - gnome-shell-extension-openweather
+      - gnome-shell-extension-user-theme
+      - gnome-shell-extension-gpaste
+- name: install German spell checking support
+  dnf:
+    state: present
+    name:
+      - libreoffice-langpack-de
+      - hunspell-de
+      - aspell-de
+- name: install dconf-editor
+  dnf: name=dconf-editor state=present
+- name: install the menu editor
+  dnf: name=menulibre state=present
+- name: install deja-dup backup solution
+  dnf:
+    state: present
+    name:
+    - deja-dup
+    - deja-dup-nautilus
+- name: install the gimp
+  dnf: name=gimp state=present
+- name: install inkscape
+  dnf: name=inkscape state=present
+- name: install gnome apps
+  dnf:
+    state: present
+    name:
+    - gnome-photos
+    - gnome-music
+    - gnome-books
+    - foliate
+- name: install shotwell
+  dnf: name=shotwell state=present
+- name: install media codecs
+  dnf:
+    state: present
+    name:
+    - gstreamer-ffmpeg
+    - gstreamer1-libav
+    - gstreamer1-vaapi
+    - gstreamer1-plugins-bad-free
+    - gstreamer1-plugins-bad-free-extras
+    - gstreamer1-plugins-bad-freeworld
+    - gstreamer1-plugins-base-tools
+    - gstreamer1-plugins-good
+    - gstreamer1-plugins-good-extras
+    - gstreamer1-plugins-ugly
+    - gstreamer1-plugins-ugly-free
+- name: install the awscli
+  dnf: name=awscli state=present
+- name: install google cloud sdk
+  dnf: name=google-cloud-sdk state=present
+- name: install kubectl
+  dnf:  name=kubernetes-client state=present
+- name: install go language and docs
+  dnf:
+    state: present
+    name:
+    - golang
+    - golang-docs
+# Games
+- name: install games
+  dnf:
+    state: present
+    name:
+    - five-or-more
+    - gnome-tetravex
+    - gnome-mines
+    - gnome-mahjongg
+    - iagno
+    - nethack
+# shell working enviroment
+- name: install bat
+  dnf: name=bat state=present
+- name: install fzf
+  dnf: name=fzf state=present
+- name: install autojump
+  dnf: name=autojump-zsh state=present
+- name: install ripgrep
+  dnf: name=ripgrep state=present
+- name: install fd
+  dnf: name=fd-find state=present
+- name: install xclip
+  dnf: name=xclip state=present
+- name: install zsh
+  dnf: name=zsh state=present
+- name: install direnv
+  dnf: name=direnv state=present
+- name: install complete git environment
+  dnf: name=git-all state=present
+- name: install hub git wrapper for github
+  dnf: name=hub state=present
+- name: install tmux
+  dnf: name=tmux state=present
+- name: httpie "curl for humans"
+  dnf:  name=httpie state=present
+- name: install htop
+  dnf: name=htop state=present
+- name: install p7zip
+  dnf: name=p7zip state=present
+- name: install tlp power management
+  dnf: name=tlp state=present
+- name: install smartmontools
+  dnf: name=smartmontools state=present
+- name: install powertop
+  dnf: name=powertop state=present
+- name: install nvme command line tools
+  dnf: name=nvme-cli state=present
+- name: install calibre e-book management
+  dnf: name=calibre state=present
+- name: install wireshark
+  dnf: name=wireshark state=present
+- name: install transmission bittorrent client
+  dnf: name=transmission-gtk state=present
+- name: install seahorse
+  dnf: name=seahorse state=present
+- name: install openvpn client
+  dnf: name=NetworkManager-openvpn state=present
+- name: install vim and plugins
+  dnf:
+    state: present
+    name:
+      - vim-enhanced
+      - vim-X11
+      - awesome-vim-colorschemes
+      - vim-airline
+      - vim-fugitive
+      - vim-gitgutter
+- name: install javascript environment
+  dnf:
+    state: present
+    name:
+      - nodejs
+      - yarnpkg
+- name: install virtualization
+  dnf:
+    state: present
+    name:
+    - libvirt-client
+    - virt-manager
+- name: install container runtime and build environment
+  dnf:
+    state: present
+    name:
+    - podman
+    - podman-manpages
+    - podman-compose
+    - buildah
+    - skopeo
+- name: install moby-engine, docker-compose upstream docker
+  dnf:
+    state: present
+    name:
+      - moby-engine
+      - docker-compose

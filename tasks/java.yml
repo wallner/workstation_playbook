@@ -1,0 +1,11 @@
+---
+- name: install Java
+  dnf: name=java-latest-openjdk state=present
+- name: install Javadoc
+  dnf: name=java-latest-openjdk-javadoc state=present
+- name: install JMods
+  dnf: name=java-latest-openjdk-jmods
+- name: install Java source code
+  dnf: name=java-latest-openjdk-src
+- name: install Maven
+  dnf: name=maven state=present
