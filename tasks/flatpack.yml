@@ -17,5 +17,6 @@
   - com.slack.Slack
   - com.skype.Client
   - org.signal.Signal
+  - us.zoom.Zoom
 
 
