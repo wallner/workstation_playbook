@@ -51,6 +51,8 @@
   dnf: name=gimp state=present
 - name: install inkscape
   dnf: name=inkscape state=present
+- name: install ImageMagick
+  dnf: name=ImageMagick state=present
 - name: install gnome apps
   dnf:
     state: present
@@ -181,5 +183,11 @@
   dnf:
     state: present
     name:
-      - moby-engine
-      - docker-compose
+    - moby-engine
+    - docker-compose
+- name: install stuff for workshop
+  dnf:
+    state: present
+    name:
+    - code
+    - github-desktop
