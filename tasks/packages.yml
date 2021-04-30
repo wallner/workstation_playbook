@@ -136,6 +136,8 @@
   dnf: name=smartmontools state=present
 - name: install powertop
   dnf: name=powertop state=present
+- name: install compsize
+  dnf: name=compsize state=present
 - name: install nvme command line tools
   dnf: name=nvme-cli state=present
 - name: install calibre e-book management
@@ -148,6 +150,8 @@
   dnf: name=seahorse state=present
 - name: install openvpn client
   dnf: name=NetworkManager-openvpn state=present
+- name: install the visual studio code editor
+  dnf: name=code state=present
 - name: install vim and plugins
   dnf:
     state: present
@@ -185,9 +189,4 @@
     name:
     - moby-engine
     - docker-compose
-- name: install stuff for workshop
-  dnf:
-    state: present
-    name:
-    - code
-    - github-desktop
+

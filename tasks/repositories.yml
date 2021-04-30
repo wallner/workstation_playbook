@@ -4,11 +4,10 @@
     - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm
     - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm
 - name: install provided repofiles
-  copy: src=files/{{ item }} dest=/etc/yum/repos.d/ owner=root
+  copy: src=files/{{ item }} dest=/etc/yum.repos.d/ owner=root
   with_items:
   - google-cloud-sdk.repo
   - google-chrome.repo
   - insync.repo
   - vscode.repo
-  - github-desktop.repo
 
