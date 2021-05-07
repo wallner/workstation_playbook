@@ -130,12 +130,10 @@
   dnf: name=htop state=present
 - name: install p7zip
   dnf: name=p7zip state=present
-- name: install tlp power management
-  dnf: name=tlp state=present
+- name: install power-profiles-daemon
+  dnf: name=power-profiles-daemon state=present
 - name: install smartmontools
   dnf: name=smartmontools state=present
-- name: install powertop
-  dnf: name=powertop state=present
 - name: install compsize
   dnf: name=compsize state=present
 - name: install nvme command line tools
