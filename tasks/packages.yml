@@ -60,6 +60,7 @@
     - gnome-photos
     - gnome-music
     - gnome-books
+    - gnome-sound-recorder
     - foliate
 - name: install shotwell
   dnf: name=shotwell state=present
