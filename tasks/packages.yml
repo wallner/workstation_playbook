@@ -188,4 +188,6 @@
     name:
     - moby-engine
     - docker-compose
+- name: install postgresql client
+  dnf: name=postgresql state=present
 
