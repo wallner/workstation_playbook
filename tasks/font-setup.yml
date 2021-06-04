@@ -21,11 +21,11 @@
   become: yes
   become_user: "{{ user }}"
 - name: set font hinting to slight
-  raw: gsettings set org.gnome.settings-daemon.plugins.xsettings hinting slight
+  raw: gsettings set org.gnome.desktop.interface font-hinting slight
   become: yes
   become_user: "{{ user }}"
 - name: set antialiasing to rgba
-  raw: gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing rgba
+  raw: gsettings set org.gnome.desktop.interface font-antialiasing rgba
   become: yes
   become_user: "{{ user }}"
 - name: install adwaita qt themes
