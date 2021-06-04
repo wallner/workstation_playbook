@@ -13,6 +13,7 @@
     - include: tasks/packages.yml
     - include: tasks/font-setup.yml
     - include: tasks/java.yml
+    - include: tasks/node_packages.yml
     - include: tasks/flatpack.yml
     - include: tasks/dotfiles.yml
     - include: tasks/sysctl.yml
