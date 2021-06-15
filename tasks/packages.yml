@@ -30,6 +30,7 @@
       - gnome-shell-extension-openweather
       - gnome-shell-extension-user-theme
       - gnome-shell-extension-gpaste
+      - gnome-icon-theme
 - name: install German spell checking support
   dnf:
     state: present
