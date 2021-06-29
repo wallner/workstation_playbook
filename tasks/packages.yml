@@ -61,6 +61,7 @@
     - gnome-photos
     - gnome-music
     - gnome-books
+    - drawing
     - gnome-sound-recorder
     - foliate
 - name: install shotwell
@@ -86,6 +87,8 @@
   dnf: name=google-cloud-sdk state=present
 - name: install kubectl
   dnf:  name=kubernetes-client state=present
+- name: isntall zeal document browser
+  dnf: name=zeal state=present
 - name: install go language and docs
   dnf:
     state: present
