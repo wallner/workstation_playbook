@@ -84,9 +84,33 @@
 - name: install the awscli
   dnf: name=awscli state=present
 - name: install google cloud sdk
-  dnf: name=google-cloud-sdk state=present
-- name: install kubectl
-  dnf:  name=kubernetes-client state=present
+  dnf:
+    state: present
+    name:
+    - google-cloud-sdk
+    - google-cloud-sdk-config-connector
+    - google-cloud-sdk-app-engine-python
+    - google-cloud-sdk-kubectl-oidc
+    - google-cloud-sdk-minikube
+    - google-cloud-sdk-datastore-emulator
+    - google-cloud-sdk-skaffold
+    - google-cloud-sdk-cbt
+    - kubectl
+    - google-cloud-sdk-pubsub-emulator
+    - google-cloud-sdk
+    - google-cloud-sdk-cloud-build-local
+    - google-cloud-sdk-datalab
+    - google-cloud-sdk-app-engine-python-extras
+    - google-cloud-sdk-app-engine-go
+    - google-cloud-sdk-anthos-auth
+    - google-cloud-sdk-bigtable-emulator
+    - google-cloud-sdk-local-extract
+    - google-cloud-sdk-spanner-emulator
+    - google-cloud-sdk-firestore-emulator
+    - google-cloud-sdk-app-engine-grpc
+    - google-cloud-sdk-app-engine-java
+    - google-cloud-sdk-kpt
+
 - name: isntall zeal document browser
   dnf: name=zeal state=present
 - name: install go language and docs
