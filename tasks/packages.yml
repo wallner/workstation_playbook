@@ -145,12 +145,16 @@
   dnf: name=xclip state=present
 - name: install zsh
   dnf: name=zsh state=present
+- name: install zsh syntax highlighting
+  dnf: name=zsh-syntax-highlighting state=present
 - name: install direnv
   dnf: name=direnv state=present
 - name: install complete git environment
   dnf: name=git-all state=present
 - name: install hub git wrapper for github
   dnf: name=hub state=present
+- name: install GitHub Commandline client
+  dnf: name=gh state=present
 - name: install tmux
   dnf: name=tmux state=present
 - name: httpie "curl for humans"
