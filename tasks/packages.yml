@@ -61,8 +61,9 @@
     - gnome-photos
     - gnome-music
     - gnome-books
-    - drawing
     - gnome-sound-recorder
+    - gnome-power-manager
+    - drawing
     - foliate
 - name: install shotwell
   dnf: name=shotwell state=present
@@ -214,12 +215,18 @@
     - podman-compose
     - buildah
     - skopeo
-- name: install moby-engine, docker-compose upstream docker
-  dnf:
-    state: present
-    name:
     - moby-engine
     - docker-compose
 - name: install postgresql client
   dnf: name=postgresql state=present
+
+- name: install Intel media driver
+  dnf:
+    state: present
+    name:
+      - intel-media-driver
+      - libva-intel-driver
+      - libva-intel-hybrid-driver
+      - intel-gpu-tools
+      - ffmpeg
 

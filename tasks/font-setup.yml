@@ -2,12 +2,13 @@
 - name: install freetype-freeworld
   dnf: name=freetype-freeworld state=present
 - name: install fonts
-  dnf: name={{item}} state=present
-  with_items:
-      - terminus-fonts-console
-      - terminus-fonts
-      - fontawesome-fonts
-      - fontawesome-fonts-web
+  dnf:
+    state: present
+    name:
+    - terminus-fonts-console
+    - terminus-fonts
+    - fontawesome-fonts
+    - fontawesome-fonts-web
 - name: install powerline
   dnf:
     state: present
