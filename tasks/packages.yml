@@ -30,7 +30,8 @@
       - gnome-shell-extension-openweather
       - gnome-shell-extension-user-theme
       - gnome-shell-extension-gpaste
-      - gnome-icon-theme
+      - gnome-shell-extension-sound-output-device-chooser
+      - gnome-shell-extension-caffeine
 - name: install German spell checking support
   dnf:
     state: present
@@ -65,6 +66,7 @@
     - gnome-power-manager
     - drawing
     - foliate
+    - newsflash
 - name: install shotwell
   dnf: name=shotwell state=present
 - name: install media codecs
@@ -82,6 +84,7 @@
     - gstreamer1-plugins-good-extras
     - gstreamer1-plugins-ugly
     - gstreamer1-plugins-ugly-free
+
 - name: install the awscli
   dnf: name=awscli state=present
 - name: install google cloud sdk
@@ -111,9 +114,6 @@
     - google-cloud-sdk-app-engine-grpc
     - google-cloud-sdk-app-engine-java
     - google-cloud-sdk-kpt
-
-- name: isntall zeal document browser
-  dnf: name=zeal state=present
 - name: install go language and docs
   dnf:
     state: present
@@ -132,36 +132,26 @@
     - iagno
     - nethack
 # shell working enviroment
-- name: install bat
-  dnf: name=bat state=present
-- name: install fzf
-  dnf: name=fzf state=present
-- name: install autojump
-  dnf: name=autojump-zsh state=present
-- name: install ripgrep
-  dnf: name=ripgrep state=present
-- name: install fd
-  dnf: name=fd-find state=present
-- name: install xclip
-  dnf: name=xclip state=present
-- name: install zsh
-  dnf: name=zsh state=present
-- name: install zsh syntax highlighting
-  dnf: name=zsh-syntax-highlighting state=present
-- name: install direnv
-  dnf: name=direnv state=present
-- name: install complete git environment
-  dnf: name=git-all state=present
-- name: install hub git wrapper for github
-  dnf: name=hub state=present
-- name: install GitHub Commandline client
-  dnf: name=gh state=present
-- name: install tmux
-  dnf: name=tmux state=present
-- name: httpie "curl for humans"
-  dnf:  name=httpie state=present
-- name: install htop
-  dnf: name=htop state=present
+- name: Install modern shell environment
+  dnf:
+    state: present
+    name:
+      - bat
+      - direnv
+      - exa
+      - fd-find
+      - fzf
+      - gh
+      - git-all
+      - git-delta
+      - htop
+      - httpie
+      - ripgrep
+      - tmux
+      - xclip
+      - zoxide
+      - zsh
+      - zsh-syntax-highlighting
 - name: install p7zip
   dnf: name=p7zip state=present
 - name: install power-profiles-daemon
@@ -224,6 +214,7 @@
   dnf:
     state: present
     name:
+      - mesa-va-drivers-freeworld
       - intel-media-driver
       - libva-intel-driver
       - libva-intel-hybrid-driver

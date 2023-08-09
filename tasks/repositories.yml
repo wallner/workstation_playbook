@@ -11,6 +11,14 @@
     enabled: true
     gpgkey: http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xc99b11deb97541f0
     gpgcheck: yes
+- name: install Hashicorp repository
+  yum_repository:
+    name: Hashicorp
+    description: packages from Hashicorp
+    baseurl: https://rpm.releases.hashicorp.com/fedora/$releasever/$basearch/stable
+    enabled: true
+    gpgkey: https://rpm.releases.hashicorp.com/gpg
+    gpgcheck: true
 - name: install provided repofiles
   copy: src=files/{{ item }} dest=/etc/yum.repos.d/ owner=root
   with_items:

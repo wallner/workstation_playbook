@@ -9,14 +9,14 @@
   tasks:
     - name: install deps for ansible modules
       raw: dnf install -yq python-dnf
-    - include: tasks/repositories.yml
-    - include: tasks/packages.yml
-    - include: tasks/font-setup.yml
-    - include: tasks/java.yml
-    - include: tasks/node_packages.yml
-    - include: tasks/flatpack.yml
-    - include: tasks/dotfiles.yml
-    - include: tasks/sysctl.yml
+    - include_tasks: tasks/repositories.yml
+    - include_tasks: tasks/packages.yml
+    - include_tasks: tasks/font-setup.yml
+    - include_tasks: tasks/java.yml
+    - include_tasks: tasks/node_packages.yml
+    - include_tasks: tasks/flatpack.yml
+    - include_tasks: tasks/dotfiles.yml
+    - include_tasks: tasks/sysctl.yml
     - name: set the hostname
       hostname: name={{ hostname }}
     - name: change user shell to zsh
