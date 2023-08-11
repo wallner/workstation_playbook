@@ -9,14 +9,11 @@
     - terminus-fonts
     - fontawesome-fonts
     - fontawesome-fonts-web
-- name: install powerline
+- name: install powerline-fonts
   dnf:
     state: present
     name:
-    - powerline
     - powerline-fonts
-    - tmux-powerline
-    - vim-powerline
 - name: activate lcd default filter
   lineinfile: 'dest="~/.Xresources" line="Xft.lcdfilter: lcddefault" create=yes'
   become: yes

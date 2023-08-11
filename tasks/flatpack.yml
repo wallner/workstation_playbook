@@ -18,6 +18,7 @@
   - com.raggesilver.BlackBox
   - com.skype.Client
   - com.slack.Slack
+  - de.schmidhuberj.Flare
   - io.github.lainsce.Khronos
   - org.signal.Signal
   - us.zoom.Zoom

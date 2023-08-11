@@ -137,6 +137,7 @@
     state: present
     name:
       - bat
+      - chafa
       - direnv
       - exa
       - fd-find
@@ -148,6 +149,7 @@
       - httpie
       - ripgrep
       - tmux
+      - wl-clipboard
       - xclip
       - zoxide
       - zsh
