@@ -9,11 +9,12 @@
     - terminus-fonts
     - fontawesome-fonts
     - fontawesome-fonts-web
-- name: install powerline-fonts
+- name: install powerline- and nerd-fonts
   dnf:
     state: present
     name:
     - powerline-fonts
+    - nerd-fonts
 - name: activate lcd default filter
   lineinfile: 'dest="~/.Xresources" line="Xft.lcdfilter: lcddefault" create=yes'
   become: yes
@@ -30,9 +31,8 @@
   dnf:
     state: present
     name:
-      - adwaita-qt
       - adwaita-qt5
-      - adwaita-qt4
+      - adwaita-qt6
 - name: disable gnome keyboard shortcuts that conflict with intellij
   raw: gsettings set org.gnome.desktop.wm.keybindings {{item}} "[]"
   with_items:

@@ -1,8 +1,10 @@
 ---
 - name: install the rpmfusion repo packages
-  dnf: state=present name=
-    - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm
-    - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm
+  dnf: 
+    state: present 
+    name:
+      - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm
+      - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm
 - name: install Github CLI Repository
   yum_repository:
     name: gh-cli
@@ -19,11 +21,13 @@
     enabled: true
     gpgkey: https://rpm.releases.hashicorp.com/gpg
     gpgcheck: true
+- name: install nerd-fonts copr
+  community.general.copr:
+    name:  che/nerd-fonts
 - name: install provided repofiles
   copy: src=files/{{ item }} dest=/etc/yum.repos.d/ owner=root
   with_items:
   - google-cloud-sdk.repo
   - google-chrome.repo
   - insync.repo
-  - vscode.repo
 

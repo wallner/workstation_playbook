@@ -17,7 +17,6 @@
   dnf:
     state: present
     name:
-      - chromium-freeworld
       - epiphany
       - google-chrome-stable
 - name: install steam
@@ -30,7 +29,6 @@
       - gnome-shell-extension-openweather
       - gnome-shell-extension-user-theme
       - gnome-shell-extension-gpaste
-      - gnome-shell-extension-sound-output-device-chooser
       - gnome-shell-extension-caffeine
 - name: install German spell checking support
   dnf:
@@ -39,10 +37,6 @@
       - libreoffice-langpack-de
       - hunspell-de
       - aspell-de
-- name: install dconf-editor
-  dnf: name=dconf-editor state=present
-- name: install the menu editor
-  dnf: name=menulibre state=present
 - name: install deja-dup backup solution
   dnf:
     state: present
@@ -59,16 +53,18 @@
   dnf:
     state: present
     name:
+    - dconf-editor
+    - gnome-boxes
     - gnome-photos
     - gnome-music
-    - gnome-books
     - gnome-sound-recorder
     - gnome-power-manager
     - drawing
+    - dconf-editor
     - foliate
+    - menulibre
     - newsflash
-- name: install shotwell
-  dnf: name=shotwell state=present
+    - shotwell
 - name: install media codecs
   dnf:
     state: present
@@ -99,7 +95,6 @@
     - google-cloud-sdk-datastore-emulator
     - google-cloud-sdk-skaffold
     - google-cloud-sdk-cbt
-    - kubectl
     - google-cloud-sdk-pubsub-emulator
     - google-cloud-sdk
     - google-cloud-sdk-cloud-build-local
@@ -114,6 +109,7 @@
     - google-cloud-sdk-app-engine-grpc
     - google-cloud-sdk-app-engine-java
     - google-cloud-sdk-kpt
+    - kubectl
 - name: install go language and docs
   dnf:
     state: present
@@ -147,6 +143,7 @@
       - git-delta
       - htop
       - httpie
+      - moby-engine-zsh-completion
       - ripgrep
       - tmux
       - wl-clipboard
@@ -174,8 +171,6 @@
   dnf: name=seahorse state=present
 - name: install openvpn client
   dnf: name=NetworkManager-openvpn state=present
-- name: install the visual studio code editor
-  dnf: name=code state=present
 - name: install vim and plugins
   dnf:
     state: present
@@ -184,8 +179,11 @@
       - vim-X11
       - awesome-vim-colorschemes
       - vim-airline
+      - vim-commentary
+      - vim-devicons
       - vim-fugitive
       - vim-gitgutter
+      - vim-nerdtree
 - name: install javascript environment
   dnf:
     state: present
