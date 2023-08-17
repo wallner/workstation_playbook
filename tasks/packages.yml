@@ -27,7 +27,7 @@
     state: present
     name:
       - gnome-shell-extension-openweather
-      - gnome-shell-extension-user-theme
+      - gnome-shell-extension-blur-my-shell
       - gnome-shell-extension-gpaste
       - gnome-shell-extension-caffeine
 - name: install German spell checking support
