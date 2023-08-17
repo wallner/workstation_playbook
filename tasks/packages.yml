@@ -63,7 +63,7 @@
     - dconf-editor
     - foliate
     - menulibre
-    - newsflash
+      #    - newsflash
     - shotwell
 - name: install media codecs
   dnf:
