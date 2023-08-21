@@ -1,6 +1,5 @@
 Sachen die noch zu automatisieren sind:
 - Konfiguration der Maus
-- Konfiguration Compose-Key
 
 - Black Box (Terminal Emulator) konfigurieren
 

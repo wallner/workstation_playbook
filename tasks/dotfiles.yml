@@ -1,10 +1,12 @@
 ---
-- name: check out ocd
-  git: repo=git://github.com/wallner/ocd.git dest="~/.ocd" accept_hostkey=True
-  become: yes
-  become_user: "{{ user }}"
-- name: run ocd.
-  raw: ~/.ocd/bin/ocd-update
+- name: prepare stow directories
+  file:
+    path: "/home/{{ user }}/depot/"
+    state: directory
+    mode: '0755'
+    owner: "{{ user }}"
+- name: check out dotfiles
+  git: repo=git://github.com/wallner/dotfiles.git dest="~/depot/dotfiles" accept_hostkey=True
   become: yes
   become_user: "{{ user }}"
 - name: fix permissions of .ssh/options

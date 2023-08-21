@@ -63,8 +63,13 @@
     - dconf-editor
     - foliate
     - menulibre
-      #    - newsflash
     - shotwell
+- name: install adwaita qt themes
+  dnf:
+    state: present
+    name:
+      - adwaita-qt5
+      - adwaita-qt6
 - name: install media codecs
   dnf:
     state: present
@@ -145,6 +150,7 @@
       - httpie
       - moby-engine-zsh-completion
       - ripgrep
+      - stow
       - tmux
       - wl-clipboard
       - xclip

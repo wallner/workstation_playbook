@@ -7,12 +7,9 @@
     name:
     - terminus-fonts-console
     - terminus-fonts
+    - jetbrains-mono-fonts-all
     - fontawesome-fonts
     - fontawesome-fonts-web
-- name: install powerline- and nerd-fonts
-  dnf:
-    state: present
-    name:
     - powerline-fonts
     - nerd-fonts
 - name: activate lcd default filter
@@ -20,24 +17,14 @@
   become: yes
   become_user: "{{ user }}"
 - name: set font hinting to slight
-  raw: gsettings set org.gnome.desktop.interface font-hinting slight
-  become: yes
-  become_user: "{{ user }}"
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/font-hinting"
+    value: "'slight'"
 - name: set antialiasing to rgba
-  raw: gsettings set org.gnome.desktop.interface font-antialiasing rgba
-  become: yes
-  become_user: "{{ user }}"
-- name: install adwaita qt themes
-  dnf:
-    state: present
-    name:
-      - adwaita-qt5
-      - adwaita-qt6
-- name: disable gnome keyboard shortcuts that conflict with intellij
-  raw: gsettings set org.gnome.desktop.wm.keybindings {{item}} "[]"
-  with_items:
-      - panel-main-menu
-      - switch-to-workspace-left
-      - switch-to-workspace-right
-  become: yes
-  become_user: "{{ user }}"
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/font-antialiasing"
+    value: "'rgba'"
+- name: enable compose key
+  community.general.dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "[('compose', 'caps')]"
