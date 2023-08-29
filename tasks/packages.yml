@@ -132,6 +132,7 @@
     - gnome-mahjongg
     - iagno
     - nethack
+    - wesnoth
 # shell working enviroment
 - name: Install modern shell environment
   dnf:
@@ -157,6 +158,8 @@
       - zoxide
       - zsh
       - zsh-syntax-highlighting
+- name: install ldap-utils
+  dnf: name=openldap-clients state=present
 - name: install p7zip
   dnf: name=p7zip state=present
 - name: install power-profiles-daemon
@@ -222,8 +225,7 @@
     name:
       - mesa-va-drivers-freeworld
       - intel-media-driver
-      - libva-intel-driver
-      - libva-intel-hybrid-driver
       - intel-gpu-tools
-      - ffmpeg
+      - ffmpeg-free
+      - libavcodec-freeworld
 
