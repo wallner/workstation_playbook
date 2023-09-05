@@ -24,6 +24,9 @@
   community.general.dconf:
     key: "/org/gnome/desktop/interface/font-antialiasing"
     value: "'rgba'"
+- name: center new windows
+    key: "/org/gnome/mutter/center-new-windows"
+    value: True
 - name: enable compose key
   community.general.dconf:
     key: "/org/gnome/desktop/input-sources/xkb-options"
