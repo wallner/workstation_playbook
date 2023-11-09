@@ -68,8 +68,8 @@
   dnf:
     state: present
     name:
-      - adwaita-qt5
-      - adwaita-qt6
+      - qadwaitadecorations-qt5
+      - qadwaitadecorations-qt6
 - name: install media codecs
   dnf:
     state: present
