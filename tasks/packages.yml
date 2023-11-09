@@ -63,6 +63,7 @@
     - dconf-editor
     - foliate
     - menulibre
+    - loupe
     - shotwell
 - name: install adwaita qt themes
   dnf:
