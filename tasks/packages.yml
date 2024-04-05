@@ -42,7 +42,6 @@
     state: present
     name:
     - deja-dup
-    - deja-dup-nautilus
 - name: install the gimp
   dnf: name=gimp state=present
 - name: install inkscape
@@ -115,6 +114,9 @@
     - google-cloud-sdk-app-engine-grpc
     - google-cloud-sdk-app-engine-java
     - google-cloud-sdk-kpt
+    - google-cloud-sdk-gke-gcloud-auth-plugin
+    - google-cloud-cli-gke-gcloud-auth-plugin
+
     - kubectl
 - name: install go language and docs
   dnf:
@@ -150,8 +152,8 @@
       - git-delta
       - htop
       - httpie
-      - moby-engine-zsh-completion
       - ripgrep
+      - stress-ng
       - stow
       - tmux
       - wl-clipboard
@@ -226,6 +228,6 @@
       - mesa-va-drivers-freeworld
       - intel-media-driver
       - intel-gpu-tools
-      - ffmpeg-free
+      - ffmpeg
       - libavcodec-freeworld
 

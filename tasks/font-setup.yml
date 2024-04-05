@@ -1,4 +1,11 @@
 ---
+- name: install font coprs
+  community.general.copr:
+    name: "{{ item }}"
+  with_list:
+  - adrienverge/some-nice-fonts
+  - che/nerd-fonts
+
 - name: install freetype-freeworld
   dnf: name=freetype-freeworld state=present
 - name: install fonts
@@ -12,6 +19,7 @@
     - fontawesome-fonts-web
     - powerline-fonts
     - nerd-fonts
+    - some-nice-fonts
 - name: activate lcd default filter
   lineinfile: 'dest="~/.Xresources" line="Xft.lcdfilter: lcddefault" create=yes'
   become: yes
@@ -25,8 +33,9 @@
     key: "/org/gnome/desktop/interface/font-antialiasing"
     value: "'rgba'"
 - name: center new windows
+  community.general.dconf:
     key: "/org/gnome/mutter/center-new-windows"
-    value: True
+    value: "'True'"
 - name: enable compose key
   community.general.dconf:
     key: "/org/gnome/desktop/input-sources/xkb-options"

@@ -21,12 +21,9 @@
     enabled: true
     gpgkey: https://rpm.releases.hashicorp.com/gpg
     gpgcheck: true
-- name: install nerd-fonts copr
-  community.general.copr:
-    name:  che/nerd-fonts
 - name: install provided repofiles
   copy: src=files/{{ item }} dest=/etc/yum.repos.d/ owner=root
   with_items:
-  - google-cloud-sdk.repo
+  - google-cloud-cli.repo
   - insync.repo
 
