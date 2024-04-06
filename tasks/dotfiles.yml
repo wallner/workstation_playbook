@@ -6,7 +6,7 @@
     mode: '0755'
     owner: "{{ user }}"
 - name: check out dotfiles
-  git: repo=git://github.com/wallner/dotfiles.git dest="~/depot/dotfiles" accept_hostkey=True
+  git: repo=git@github.com:wallner/dotfiles.git dest="~/depot/dotfiles" accept_hostkey=True
   become: yes
   become_user: "{{ user }}"
 - name: fix permissions of .ssh/options
