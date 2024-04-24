@@ -1,10 +1,8 @@
 ---
 - name: upgrade all packages
   dnf: name=* state=latest
-- name: install gnome-tweak-tool
-  dnf: name=gnome-tweak-tool state=present
 - name: install rfkill
-  dnf: name=rfkill state=present
+  dnf: name=rfkill state=absent
 - name: install lshw
   dnf: name=lshw state=present
 - name: install insync
@@ -30,6 +28,31 @@
       - gnome-shell-extension-blur-my-shell
       - gnome-shell-extension-gpaste
       - gnome-shell-extension-caffeine
+- name: install gnome apps
+  dnf:
+    state: present
+    name:
+    - gnome-tweak-tool
+    - dconf-editor
+    - gnome-boxes
+    - gnome-photos
+    - gnome-music
+    - gnome-sound-recorder
+    - gnome-power-manager
+    - drawing
+    - dconf-editor
+    - foliate
+    - menulibre
+    - NetworkManager-openvpn
+    - loupe
+    - seahorse 
+    - shotwell
+- name: install adwaita qt themes
+  dnf:
+    state: present
+    name:
+      - qadwaitadecorations-qt5
+      - qadwaitadecorations-qt6
 - name: install German spell checking support
   dnf:
     state: present
@@ -48,28 +71,6 @@
   dnf: name=inkscape state=present
 - name: install ImageMagick
   dnf: name=ImageMagick state=present
-- name: install gnome apps
-  dnf:
-    state: present
-    name:
-    - dconf-editor
-    - gnome-boxes
-    - gnome-photos
-    - gnome-music
-    - gnome-sound-recorder
-    - gnome-power-manager
-    - drawing
-    - dconf-editor
-    - foliate
-    - menulibre
-    - loupe
-    - shotwell
-- name: install adwaita qt themes
-  dnf:
-    state: present
-    name:
-      - qadwaitadecorations-qt5
-      - qadwaitadecorations-qt6
 - name: install media codecs
   dnf:
     state: present
@@ -116,7 +117,6 @@
     - google-cloud-sdk-kpt
     - google-cloud-sdk-gke-gcloud-auth-plugin
     - google-cloud-cli-gke-gcloud-auth-plugin
-
     - kubectl
 - name: install go language and docs
   dnf:
@@ -179,10 +179,6 @@
   dnf: name=wireshark state=present
 - name: install transmission bittorrent client
   dnf: name=transmission-gtk state=present
-- name: install seahorse
-  dnf: name=seahorse state=present
-- name: install openvpn client
-  dnf: name=NetworkManager-openvpn state=present
 - name: install vim and plugins
   dnf:
     state: present
@@ -220,7 +216,6 @@
     - docker-compose
 - name: install postgresql client
   dnf: name=postgresql state=present
-
 - name: install Intel media driver
   dnf:
     state: present

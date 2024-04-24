@@ -1,0 +1,3 @@
+---
+- name: install cargo
+  dnf: name=cargo state=present

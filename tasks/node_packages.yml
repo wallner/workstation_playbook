@@ -3,8 +3,9 @@
   yarn:
     name: sfdx-cli
     global: yes
-    state: latest
-- name: Install the Node packages for google cloud funktions
+    state: absent
+    # state: latest
+- name: Install the Node packages for google cloud functions
   yarn:
     name: "@google-cloud/functions"
     global: yes
