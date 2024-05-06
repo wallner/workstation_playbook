@@ -1,3 +1,8 @@
 ---
 - name: install cargo
   dnf: name=cargo state=present
+- name: install tod todoist client
+  community.general.cargo:
+    name: tod
+    path: /usr/local
+    state: latest

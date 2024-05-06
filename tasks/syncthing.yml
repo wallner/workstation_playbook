@@ -1,0 +1,10 @@
+---
+- name: install syncthing
+  dnf: name=syncthing state=present
+- name: configure autostart at login
+  file:
+    src: /usr/share/applications/syncthing-start.desktop
+    dest: /home/{{ user }}/.config/autostart/syncthing-start.desktop
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    state: link

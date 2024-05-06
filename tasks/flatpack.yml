@@ -15,7 +15,6 @@
     remote=flathub name={{item}} state=present method=user
   with_items:
   - com.github.bleakgrey.tootle
-  - com.raggesilver.BlackBox
   - com.skype.Client
   - com.slack.Slack
   - de.schmidhuberj.Flare

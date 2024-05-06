@@ -1,8 +1,6 @@
 ---
 - name: upgrade all packages
   dnf: name=* state=latest
-- name: install rfkill
-  dnf: name=rfkill state=absent
 - name: install lshw
   dnf: name=lshw state=present
 - name: install insync
@@ -32,20 +30,21 @@
   dnf:
     state: present
     name:
+    - blackbox-terminal
     - gnome-tweak-tool
-    - dconf-editor
     - gnome-boxes
     - gnome-photos
     - gnome-music
     - gnome-sound-recorder
     - gnome-power-manager
+    - dconf-editor
     - drawing
     - dconf-editor
     - foliate
     - menulibre
     - NetworkManager-openvpn
     - loupe
-    - seahorse 
+    - seahorse
     - shotwell
 - name: install adwaita qt themes
   dnf:

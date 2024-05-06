@@ -16,6 +16,7 @@
     - include_tasks: tasks/cargo_packages.yml
     - include_tasks: tasks/node_packages.yml
     - include_tasks: tasks/flatpack.yml
+    - include_tasks: tasks/syncthing.yml
     - include_tasks: tasks/configure-gnome.yml
     - include_tasks: tasks/dotfiles.yml
     - include_tasks: tasks/sysctl.yml
