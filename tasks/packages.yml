@@ -128,11 +128,12 @@
   dnf:
     state: present
     name:
+    - aisleriot
     - five-or-more
-    - gnome-tetravex
-    - gnome-mines
-    - gnome-mahjongg
     - iagno
+    - gnome-mahjongg
+    - gnome-mines
+    - gnome-tetravex
     - nethack
     - wesnoth
 # shell working enviroment

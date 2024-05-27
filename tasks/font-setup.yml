@@ -3,7 +3,7 @@
   community.general.copr:
     name: "{{ item }}"
   with_list:
-  # - adrienverge/some-nice-fonts
+  - adrienverge/some-nice-fonts
   - che/nerd-fonts
 
 - name: install freetype-freeworld
