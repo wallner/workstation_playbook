@@ -14,11 +14,15 @@
   community.general.flatpak:
     remote=flathub name={{item}} state=present method=user
   with_items:
-  - com.github.bleakgrey.tootle
+  - com.mardojai.ForgeSparks
+  - com.rafaelmardojai.Blanket
+  - com.github.unrud.djpdf
   - com.skype.Client
   - com.slack.Slack
   - de.schmidhuberj.Flare
   - io.github.lainsce.Khronos
+  - md.obsidian.Obsidian
+  - org.gnome.World.Secrets
   - re.sonny.Junction
   - us.zoom.Zoom
 

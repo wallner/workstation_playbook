@@ -117,12 +117,6 @@
     - google-cloud-sdk-gke-gcloud-auth-plugin
     - google-cloud-cli-gke-gcloud-auth-plugin
     - kubectl
-- name: install go language and docs
-  dnf:
-    state: present
-    name:
-    - golang
-    - golang-docs
 # Games
 - name: install games
   dnf:
@@ -150,9 +144,12 @@
       - gh
       - git-all
       - git-delta
+      - gpaste-zsh-completion
       - htop
       - httpie
+      - lnav
       - ripgrep
+      - starship
       - stress-ng
       - stow
       - tmux
@@ -160,7 +157,14 @@
       - xclip
       - zoxide
       - zsh
+      - zsh-autosuggestions
       - zsh-syntax-highlighting
+- name: install various developent tools
+  dnf:
+    state: present
+    name:
+      - autoconf
+      - ncurses-devel
 - name: install ldap-utils
   dnf: name=openldap-clients state=present
 - name: install p7zip

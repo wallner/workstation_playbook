@@ -21,6 +21,10 @@
     enabled: true
     gpgkey: https://rpm.releases.hashicorp.com/gpg
     gpgcheck: true
+- name: install starship copr
+  community.general.copr:
+    name: atim/starship
+
 - name: install provided repofiles
   copy: src=files/{{ item }} dest=/etc/yum.repos.d/ owner=root
   with_items:

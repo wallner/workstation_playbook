@@ -1,0 +1,25 @@
+---
+- name: install go language and docs
+  dnf:
+    state: present
+    name:
+    - golang
+    - golang-docs
+
+- name: check go version
+  command: go version
+  register: result
+  changed_when: no
+  ignore_errors: true
+
+- name: "Set GO path"
+  set_fact:
+    go_path: "{{ lookup('env', 'GOPATH') | default(ansible_env.HOME+'/go', true) }}"
+
+- name: go get pistol
+  shell: go install github.com/doronbehar/pistol/cmd/pistol@latest
+  environment:
+    GOPATH: "{{ go_path }}"
+  register: pistol
+
+- debug: var=pistol
