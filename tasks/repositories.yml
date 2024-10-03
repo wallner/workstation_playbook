@@ -5,14 +5,7 @@
     name:
     - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm
     - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm
-- name: install Github CLI Repository
-  yum_repository:
-    name: gh-cli
-    description: packages for the GitHub CLI
-    baseurl: https://cli.github.com/packages/rpm
-    enabled: true
-    gpgkey: http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xc99b11deb97541f0
-    gpgcheck: yes
+
 - name: install Hashicorp repository
   yum_repository:
     name: Hashicorp
@@ -24,6 +17,9 @@
 - name: install starship copr
   community.general.copr:
     name: atim/starship
+- name: install gh (github cli copr)
+  community.general.copr:
+    name: mikelo2/gh
 
 - name: install provided repofiles
   copy: src=files/{{ item }} dest=/etc/yum.repos.d/ owner=root
