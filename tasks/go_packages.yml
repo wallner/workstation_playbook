@@ -16,10 +16,13 @@
   set_fact:
     go_path: "{{ lookup('env', 'GOPATH') | default(ansible_env.HOME+'/go', true) }}"
 
-- name: go get pistol
+- name: install pistol
   shell: go install github.com/doronbehar/pistol/cmd/pistol@latest
   environment:
     GOPATH: "{{ go_path }}"
-  register: pistol
 
-- debug: var=pistol
+- name: install mob.sh
+  shell: go install github.com/remotemobprogramming/mob/v5@latest
+  environment:
+    GOPATH: "{{ go_path }}"
+
