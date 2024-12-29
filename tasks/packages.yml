@@ -33,6 +33,7 @@
     - blackbox-terminal
     - gnome-tweak-tool
     - gnome-boxes
+    - gnome-console # gnomes default. Make sure, it's there
     - gnome-photos
     - gnome-music
     - gnome-sound-recorder
@@ -44,6 +45,7 @@
     - menulibre
     - NetworkManager-openvpn
     - loupe
+    - ptyxis # fedoras default. Make sure, it's there
     - seahorse
     - shotwell
 - name: install adwaita qt themes
