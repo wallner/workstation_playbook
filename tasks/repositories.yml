@@ -14,16 +14,18 @@
     enabled: true
     gpgkey: https://rpm.releases.hashicorp.com/gpg
     gpgcheck: true
-- name: install starship copr
+
+- name: Enable various COPRs
   community.general.copr:
-    name: atim/starship
-- name: install gh (github cli copr)
-  community.general.copr:
-    name: mikelo2/gh
+    name: "{{ item }}"
+  loop:
+    - atim/starship 
+    - mikelo2/gh
+    - pgdev/ghostty
 
 - name: install provided repofiles
   copy: src=files/{{ item }} dest=/etc/yum.repos.d/ owner=root
-  with_items:
+  loop:
   - google-cloud-cli.repo
   - insync.repo
 
