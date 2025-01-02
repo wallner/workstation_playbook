@@ -23,5 +23,8 @@
     - include_tasks: tasks/sysctl.yml
     - name: set the hostname
       hostname: name={{ hostname }}
-    - name: change user shell to zsh
-      user: name="{{ user }}" shell=/bin/zsh
+    - name: Configure user
+      user: name="{{ user }}
+      shell=/bin/zsh
+      groups=docker
+      append=yes
