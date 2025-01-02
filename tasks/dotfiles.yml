@@ -6,14 +6,15 @@
     mode: '0755'
     owner: "{{ user }}"
 - name: Check out dotfiles
-  git: repo=git@github.com:wallner/dotfiles.git dest="/home/{{ user }}/depot/dotfiles" accept_hostkey=True
-  become: yes
-  become_user: "{{ user }}"
-- name: fix permissions of .ssh/options
-  file: path=/home/{{ user }}/.ssh/config mode=0600
+  git: repo=https://github.com/wallner/dotfiles.git dest="/home/{{ user }}/depot/dotfiles" 
+#  git: repo=git@github.com:wallner/dotfiles.git dest="/home/{{ user }}/depot/dotfiles" accept_hostkey=True
   become: yes
   become_user: "{{ user }}"
 - name: Run stow
   shell: "stow --restow --dir /home/{{ user }}/depot --target /home/{{ user }} dotfiles --verbose=2"
   register: result
   changed_when: 'result.stderr is search("LINK: ")'
+- name: fix permissions of .ssh/options
+  file: path=/home/{{ user }}/.ssh/config mode=0600
+  become: yes
+  become_user: "{{ user }}"

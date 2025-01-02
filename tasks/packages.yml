@@ -31,6 +31,7 @@
     state: present
     name:
     - blackbox-terminal
+    - geary
     - gnome-tweak-tool
     - gnome-boxes
     - gnome-console # gnomes default. Make sure, it's there
@@ -168,6 +169,8 @@
     name:
       - autoconf
       - ncurses-devel
+      - file-devel
+      - openssl-devel
 - name: install ldap-utils
   dnf: name=openldap-clients state=present
 - name: install p7zip
@@ -224,6 +227,7 @@
 - name: install Intel media driver
   dnf:
     state: present
+    allowerasing: true
     name:
       - mesa-va-drivers-freeworld
       - intel-media-driver
