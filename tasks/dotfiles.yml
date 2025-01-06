@@ -7,7 +7,6 @@
     owner: "{{ user }}"
 - name: Check out dotfiles
   git: repo=https://github.com/wallner/dotfiles.git dest="/home/{{ user }}/depot/dotfiles" 
-#  git: repo=git@github.com:wallner/dotfiles.git dest="/home/{{ user }}/depot/dotfiles" accept_hostkey=True
   become: yes
   become_user: "{{ user }}"
 - name: Run stow
@@ -18,3 +17,9 @@
   file: path=/home/{{ user }}/.ssh/config mode=0600
   become: yes
   become_user: "{{ user }}"
+- name: Generate the caches for 'bat'
+  shell: "bat cache --build"
+  become: yes
+  become_user: "{{ user }}"
+  register: result
+  changed_when: 'result.stdout is search ("okay")'
