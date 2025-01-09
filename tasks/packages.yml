@@ -1,25 +1,27 @@
 ---
 - name: upgrade all packages
-  dnf: name=* state=latest
+  ansible.builtin.dnf: name=* state=latest
 - name: install lshw
-  dnf: name=lshw state=present
-- name: install insync
-  dnf: name=insync state=present
-- name: install dropbox
-  dnf: name=dropbox state=present
-- name: install keepassxc
-  dnf: name=keepassxc state=present
-- name: install browsers
-  dnf:
+  ansible.builtin.dnf: name=lshw state=present
+- name: install file sync infrastructure
+  ansible.builtin.dnf:
     state: present
     name:
-      - epiphany
+      - dropbox
+      - insync
+- name: install keepassxc
+  ansible.builtin.dnf: name=keepassxc state=present
+- name: install browsers
+  ansible.builtin.dnf:
+    state: present
+    name:
       - google-chrome-stable
+      - epiphany
 - name: install steam
-  dnf: name=steam state=present
+  ansible.builtin.dnf: name=steam state=present
 # Desktop working envronment
 - name: install gnome-shell extensions
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
       - gnome-shell-extension-openweather
@@ -27,7 +29,7 @@
       - gnome-shell-extension-gpaste
       - gnome-shell-extension-caffeine
 - name: install gnome apps
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
     - blackbox-terminal
@@ -50,31 +52,31 @@
     - seahorse
     - shotwell
 - name: install adwaita qt themes
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
       - qadwaitadecorations-qt5
       - qadwaitadecorations-qt6
 - name: install German spell checking support
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
       - libreoffice-langpack-de
       - hunspell-de
       - aspell-de
 - name: install deja-dup backup solution
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
     - deja-dup
 - name: install the gimp
-  dnf: name=gimp state=present
+  ansible.builtin.dnf: name=gimp state=present
 - name: install inkscape
-  dnf: name=inkscape state=present
+  ansible.builtin.dnf: name=inkscape state=present
 - name: install ImageMagick
-  dnf: name=ImageMagick state=present
+  ansible.builtin.dnf: name=ImageMagick state=present
 - name: install media codecs
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
     - gstreamer-ffmpeg
@@ -90,9 +92,9 @@
     - gstreamer1-plugins-ugly-free
 
 - name: install the awscli
-  dnf: name=awscli state=present
+  ansible.builtin.dnf: name=awscli state=present
 - name: install google cloud sdk
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
     - google-cloud-sdk
@@ -122,7 +124,7 @@
     - kubectl
 # Games
 - name: install games
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
     - aisleriot
@@ -135,7 +137,7 @@
     - wesnoth
 # shell working enviroment
 - name: Install modern shell environment
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
       - ghostty
@@ -164,7 +166,7 @@
       - zsh-autosuggestions
       - zsh-syntax-highlighting
 - name: install various developent tools
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
       - autoconf
@@ -172,23 +174,23 @@
       - file-devel
       - openssl-devel
 - name: install ldap-utils
-  dnf: name=openldap-clients state=present
+  ansible.builtin.dnf: name=openldap-clients state=present
 - name: install p7zip
-  dnf: name=p7zip state=present
+  ansible.builtin.dnf: name=p7zip state=present
 - name: install smartmontools
-  dnf: name=smartmontools state=present
+  ansible.builtin.dnf: name=smartmontools state=present
 - name: install compsize
-  dnf: name=compsize state=present
+  ansible.builtin.dnf: name=compsize state=present
 - name: install nvme command line tools
-  dnf: name=nvme-cli state=present
+  ansible.builtin.dnf: name=nvme-cli state=present
 - name: install calibre e-book management
-  dnf: name=calibre state=present
+  ansible.builtin.dnf: name=calibre state=present
 - name: install wireshark
-  dnf: name=wireshark state=present
+  ansible.builtin.dnf: name=wireshark state=present
 - name: install transmission bittorrent client
-  dnf: name=transmission-gtk state=present
+  ansible.builtin.dnf: name=transmission-gtk state=present
 - name: install vim and plugins
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
       - vim-enhanced
@@ -201,19 +203,19 @@
       - vim-gitgutter
       - vim-nerdtree
 - name: install javascript environment
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
       - nodejs
       - yarnpkg
 - name: install virtualization
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
     - libvirt-client
     - virt-manager
 - name: install container runtime and build environment
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
     - podman
@@ -223,9 +225,9 @@
     - skopeo
     - docker-compose
 - name: install postgresql client
-  dnf: name=postgresql state=present
+  ansible.builtin.dnf: name=postgresql state=present
 - name: install Intel media driver
-  dnf:
+  ansible.builtin.dnf:
     state: present
     allowerasing: true
     name:
