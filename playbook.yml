@@ -24,7 +24,8 @@
     - name: set the hostname
       hostname: name={{ hostname }}
     - name: Configure user
-      user: name="{{ user }}
-      shell=/bin/zsh
-      groups=docker
-      append=yes
+      ansible.builtin.user: 
+        name: "{{ user }}"
+        shell: /bin/zsh
+        groups: docker
+        append: yes
