@@ -34,6 +34,7 @@
     name:
     - blackbox-terminal
     - geary
+    - gnome-backgrounds-extras
     - gnome-tweak-tool
     - gnome-boxes
     - gnome-console # gnomes default. Make sure, it's there
