@@ -7,11 +7,15 @@
   community.general.dconf:
     key: "/org/gnome/desktop/input-sources/xkb-options"
     value: "[('compose', 'caps')]"
-- name: disable conflicting keyboard shortcut switch to workspace left
+- name: Disable conflicting keyboard shortcut switch to workspace left
   community.general.dconf:
     key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-left"
     value: "['<Super>Page_Up', '<Super><Alt>Left']"
-- name: disable conflicting keyboard shortcut switch to workspace right
+- name: Disable conflicting keyboard shortcut switch to workspace right
   community.general.dconf:
     key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-right"
     value: "['<Super>Page_Down', '<Super><Alt>Right']"
+- name: Set monoface font to 'JetBrains Mono'
+  community.general.dconf:
+    key: "/org/gnome/desktop/interface/monospace-font-name"
+    value: "'JetBrains Mono 10'"
