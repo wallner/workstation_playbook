@@ -12,16 +12,17 @@
   become: yes
   become_user: "{{ user }}"
   community.general.flatpak:
-    remote=flathub name={{item}} state=present method=user
-  with_items:
-  - com.mardojai.ForgeSparks
-  - com.rafaelmardojai.Blanket
-  - com.github.unrud.djpdf
-  - com.skype.Client
-  - com.slack.Slack
-  - de.schmidhuberj.Flare
-  - md.obsidian.Obsidian
-  - org.gnome.World.Secrets
-  - re.sonny.Junction
-  - us.zoom.Zoom
+    remote: flathub
+    state: latest
+    method: user
+    name:
+    - com.mardojai.ForgeSparks
+    - com.rafaelmardojai.Blanket
+    - com.skype.Client
+    - com.slack.Slack
+    - de.schmidhuberj.Flare
+    - md.obsidian.Obsidian
+    - org.gnome.World.Secrets
+    - re.sonny.Junction
+    - us.zoom.Zoom
 
