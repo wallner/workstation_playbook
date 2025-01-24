@@ -25,6 +25,14 @@
     dconf:
       key: "/org/gnome/desktop/interface/monospace-font-name"
       value: '"JetBrains Mono 10"'
+  - name: set font hinting to slight
+    dconf:
+      key: "/org/gnome/desktop/interface/font-hinting"
+      value: "'slight'"
+  - name: set antialiasing to rgba
+    dconf:
+      key: "/org/gnome/desktop/interface/font-antialiasing"
+      value: "'rgba'"
   become: true
   become_user: "{{ user }}"
 

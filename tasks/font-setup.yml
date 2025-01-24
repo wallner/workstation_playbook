@@ -30,11 +30,4 @@
   lineinfile: 'dest="~/.Xresources" line="Xft.lcdfilter: lcddefault" create=yes'
   become: yes
   become_user: "{{ user }}"
-- name: set font hinting to slight
-  community.general.dconf:
-    key: "/org/gnome/desktop/interface/font-hinting"
-    value: "'slight'"
-- name: set antialiasing to rgba
-  community.general.dconf:
-    key: "/org/gnome/desktop/interface/font-antialiasing"
-    value: "'rgba'"
+  
