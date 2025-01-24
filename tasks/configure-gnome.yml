@@ -1,21 +1,30 @@
 ---
-- name: center new windows
-  community.general.dconf:
-    key: "/org/gnome/mutter/center-new-windows"
-    value: "'True'"
-- name: enable compose key
-  community.general.dconf:
-    key: "/org/gnome/desktop/input-sources/xkb-options"
-    value: "[('compose', 'caps')]"
-- name: Disable conflicting keyboard shortcut switch to workspace left
-  community.general.dconf:
-    key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-left"
-    value: "['<Super>Page_Up', '<Super><Alt>Left']"
-- name: Disable conflicting keyboard shortcut switch to workspace right
-  community.general.dconf:
-    key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-right"
-    value: "['<Super>Page_Down', '<Super><Alt>Right']"
-- name: Set monoface font to 'JetBrains Mono'
-  community.general.dconf:
-    key: "/org/gnome/desktop/interface/monospace-font-name"
-    value: "'JetBrains Mono 10'"
+- block:
+  - name: center new windows
+    dconf:
+      key: '/org/gnome/mutter/center-new-windows'
+      value: 'true'
+      state: present
+  - name: enable compose key
+    dconf:
+      key: '/org/gnome/desktop/input-sources/xkb-options'
+      value: "['caps:shift_nocancel', 'compose:caps']"
+  - name: Disable conflicting keyboard shortcut switch to workspace left
+    dconf:
+      key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-left"
+      value: "['<Super>Page_Up', '<Super><Alt>Left']"
+  - name: Disable conflicting keyboard shortcut switch to workspace right
+    dconf:
+      key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-right"
+      value: "['<Super>Page_Down', '<Super><Alt>Right']"
+  - name: Disable conflicting keyboard shortcut of GPaste
+    dconf:
+      key: "/org/gnome/GPaste/make-password"
+      value: "''"
+  - name: Set monoface font to 'JetBrains Mono'
+    dconf:
+      key: "/org/gnome/desktop/interface/monospace-font-name"
+      value: '"JetBrains Mono 10"'
+  become: true
+  become_user: "{{ user }}"
+
