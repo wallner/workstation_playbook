@@ -33,6 +33,7 @@
     state: present
     name:
     - blackbox-terminal
+    - cheese
     - geary
     - gnome-backgrounds-extras
     - gnome-tweak-tool
