@@ -9,3 +9,7 @@
   yarn:
     name: "@google-cloud/functions"
     global: yes
+- name: Install deno
+  yarn:
+    name: deno
+    global: yes
