@@ -157,6 +157,7 @@
       - httpie
       - lnav
       - ripgrep
+      - sensible-utils
       - starship
       - stress-ng
       - stow
@@ -226,8 +227,12 @@
     - buildah
     - skopeo
     - docker-compose
-- name: install postgresql client
-  ansible.builtin.dnf: name=postgresql state=present
+- name: install database tools
+  ansible.builtin.dnf:
+    state: present
+    name:
+    - sqlitebrowser
+    - postgresql
 - name: install Intel media driver
   ansible.builtin.dnf:
     state: present
