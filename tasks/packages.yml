@@ -9,6 +9,7 @@
     name:
       - dropbox
       - insync
+      - rclone 
 - name: install keepassxc
   ansible.builtin.dnf: name=keepassxc state=present
 - name: install browsers
