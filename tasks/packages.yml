@@ -93,6 +93,7 @@
     - gstreamer1-plugins-good-extras
     - gstreamer1-plugins-ugly
     - gstreamer1-plugins-ugly-free
+    - libmp4v2
 
 - name: install the awscli
   ansible.builtin.dnf: name=awscli state=present

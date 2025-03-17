@@ -11,6 +11,7 @@
       raw: dnf install -yq python-dnf
     - include_tasks: tasks/repositories.yml
     - include_tasks: tasks/packages.yml
+    - include_tasks: tasks/proton.yml
     - include_tasks: tasks/font-setup.yml
     - include_tasks: tasks/java.yml
     - include_tasks: tasks/cargo_packages.yml
