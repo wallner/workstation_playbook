@@ -16,6 +16,7 @@
     state: latest
     method: user
     name:
+    - com.jetbrains.IntelliJ-IDEA-Ultimate
     - com.mardojai.ForgeSparks
     - com.rafaelmardojai.Blanket
     - com.skype.Client
@@ -23,6 +24,5 @@
     - de.schmidhuberj.Flare
     - md.obsidian.Obsidian
     - org.gnome.World.Secrets
-    - re.sonny.Junction
     - us.zoom.Zoom
 

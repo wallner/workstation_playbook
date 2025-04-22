@@ -6,3 +6,7 @@
     name: tod
     path: /usr/local
     state: latest
+- name: install eza, a modern replacement for ls
+  community.general.cargo:
+    name: eza
+    path: /usr/local

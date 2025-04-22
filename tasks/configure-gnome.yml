@@ -21,10 +21,10 @@
     dconf:
       key: "/org/gnome/GPaste/make-password"
       value: "''"
-  - name: Set monoface font to 'JetBrains Mono'
+  - name: Set monoface font to 'Adwaita Mono' (The default)
     dconf:
       key: "/org/gnome/desktop/interface/monospace-font-name"
-      value: '"JetBrains Mono 10"'
+      value: '"Adwaita Mono 11"'
   - name: set font hinting to slight
     dconf:
       key: "/org/gnome/desktop/interface/font-hinting"
