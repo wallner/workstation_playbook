@@ -19,10 +19,17 @@
     - com.jetbrains.IntelliJ-IDEA-Ultimate
     - com.mardojai.ForgeSparks
     - com.rafaelmardojai.Blanket
-    - com.skype.Client
     - com.slack.Slack
     - de.schmidhuberj.Flare
     - md.obsidian.Obsidian
     - org.gnome.World.Secrets
+    - org.freedesktop.Sdk.Extension.golang/x86_64/24.08
+    - org.freedesktop.Sdk.Extension.node22/x86_64/24.08
+    - org.freedesktop.Sdk.Extension.node20/x86_64/24.08
+    - org.freedesktop.Sdk.Extension.openjdk/x86_64/24.08
+    - org.freedesktop.Sdk.Extension.openjdk21/x86_64/24.08
+    - org.freedesktop.Sdk.Extension.openjdk17/x86_64/24.08
+    - org.freedesktop.Sdk.Extension.rust-stable/x86_64/24.08
+    - org.freedesktop.Sdk.Extension.typescript/x86_64/24.08
     - us.zoom.Zoom
 

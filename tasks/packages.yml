@@ -35,6 +35,7 @@
     - blackbox-terminal
     - cheese
     - geary
+    - ghostty
     - gnome-backgrounds-extras
     - gnome-tweak-tool
     - gnome-boxes
@@ -143,7 +144,6 @@
   ansible.builtin.dnf:
     state: present
     name:
-      - ghostty
       - bat
       - chafa
       - direnv
@@ -222,11 +222,11 @@
     state: present
     name:
     - podman
-    - podman-manpages
+    - podman-docker
     - podman-compose
+    - podman-manpages
     - buildah
     - skopeo
-    - docker-compose
 - name: install database tools
   ansible.builtin.dnf:
     state: present
