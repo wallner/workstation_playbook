@@ -1,33 +1,33 @@
 ---
 - name: upgrade all packages
-  ansible.builtin.dnf: name=* state=latest
+  dnf: name=* state=latest
 - name: install lshw
-  ansible.builtin.dnf: name=lshw state=present
+  dnf: name=lshw state=present
 - name: install file sync infrastructure
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
       - dropbox
       - insync
-      - rclone 
+      - rclone
 - name: install keepassxc
-  ansible.builtin.dnf: name=keepassxc state=present
+  dnf: name=keepassxc state=present
 - name: install browsers
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
       - google-chrome-stable
       - epiphany
 - name: install steam
-  ansible.builtin.dnf: name=steam state=present
+  dnf: name=steam state=present
 # Desktop working envronment
 - name: install gnome-shell extensions
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
       - gnome-shell-extension-blur-my-shell
-      - gnome-shell-extension-gpaste
       - gnome-shell-extension-caffeine
+      - gnome-shell-extension-gpaste
 - name: install gnome apps
   ansible.builtin.dnf:
     state: present
@@ -162,6 +162,7 @@
       - stress-ng
       - stow
       - tmux
+      - tig
       - wl-clipboard
       - xclip
       - zoxide
