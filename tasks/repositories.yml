@@ -23,6 +23,7 @@
     - atim/starship 
     - mikelo2/gh
     - pgdev/ghostty
+    - jbangev/jbang
 
 - name: install provided repofiles
   copy: src=files/{{ item }} dest=/etc/yum.repos.d/ owner=root

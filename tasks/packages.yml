@@ -29,12 +29,15 @@
       - gnome-shell-extension-caffeine
       - gnome-shell-extension-gpaste
 - name: install gnome apps
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
     - blackbox-terminal
     - cheese
     - geary
+    - drawing
+    - dconf-editor
+    - foliate
     - ghostty
     - gnome-backgrounds-extras
     - gnome-tweak-tool
@@ -44,31 +47,28 @@
     - gnome-music
     - gnome-sound-recorder
     - gnome-power-manager
-    - dconf-editor
-    - drawing
-    - dconf-editor
-    - foliate
     - menulibre
     - NetworkManager-openvpn
     - loupe
+    - lollypop
     - ptyxis # fedoras default. Make sure, it's there
     - seahorse
     - shotwell
 - name: install adwaita qt themes
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
       - qadwaitadecorations-qt5
       - qadwaitadecorations-qt6
 - name: install German spell checking support
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
       - libreoffice-langpack-de
       - hunspell-de
       - aspell-de
 - name: install deja-dup backup solution
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
     - deja-dup
@@ -79,7 +79,7 @@
 - name: install ImageMagick
   ansible.builtin.dnf: name=ImageMagick state=present
 - name: install media codecs
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
     - gstreamer-ffmpeg
@@ -96,7 +96,7 @@
     - libmp4v2
 
 - name: install the awscli
-  ansible.builtin.dnf: name=awscli state=present
+  dnf: name=awscli state=present
 - name: install google cloud sdk
   ansible.builtin.dnf:
     state: present
@@ -128,7 +128,7 @@
     - kubectl
 # Games
 - name: install games
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
     - aisleriot
@@ -141,7 +141,7 @@
     - wesnoth
 # shell working enviroment
 - name: Install modern shell environment
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
       - bat
@@ -170,31 +170,32 @@
       - zsh-autosuggestions
       - zsh-syntax-highlighting
 - name: install various developent tools
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
       - autoconf
       - ncurses-devel
       - file-devel
       - openssl-devel
+      - uv
 - name: install ldap-utils
-  ansible.builtin.dnf: name=openldap-clients state=present
+  dnf: name=openldap-clients state=present
 - name: install p7zip
-  ansible.builtin.dnf: name=p7zip state=present
+  dnf: name=p7zip state=present
 - name: install smartmontools
-  ansible.builtin.dnf: name=smartmontools state=present
+  dnf: name=smartmontools state=present
 - name: install compsize
-  ansible.builtin.dnf: name=compsize state=present
+  dnf: name=compsize state=present
 - name: install nvme command line tools
-  ansible.builtin.dnf: name=nvme-cli state=present
+  dnf: name=nvme-cli state=present
 - name: install calibre e-book management
-  ansible.builtin.dnf: name=calibre state=present
+  dnf: name=calibre state=present
 - name: install wireshark
-  ansible.builtin.dnf: name=wireshark state=present
+  dnf: name=wireshark state=present
 - name: install transmission bittorrent client
-  ansible.builtin.dnf: name=transmission-gtk state=present
+  dnf: name=transmission-gtk state=present
 - name: install vim and plugins
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
       - vim-enhanced
@@ -207,19 +208,20 @@
       - vim-gitgutter
       - vim-nerdtree
 - name: install javascript environment
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
       - nodejs
       - yarnpkg
+      - typescript
 - name: install virtualization
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
     - libvirt-client
     - virt-manager
 - name: install container runtime and build environment
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
     - podman
@@ -229,13 +231,13 @@
     - buildah
     - skopeo
 - name: install database tools
-  ansible.builtin.dnf:
+  dnf:
     state: present
     name:
     - sqlitebrowser
     - postgresql
 - name: install Intel media driver
-  ansible.builtin.dnf:
+  dnf:
     state: present
     allowerasing: true
     name:
