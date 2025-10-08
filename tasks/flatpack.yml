@@ -13,7 +13,7 @@
   become_user: "{{ user }}"
   community.general.flatpak:
     remote: flathub
-    state:  latest
+    state:  present
     method: user
     name:
     - com.jetbrains.IntelliJ-IDEA-Ultimate
@@ -26,6 +26,7 @@
     - org.freedesktop.Sdk.Extension.golang/x86_64/25.08
     - org.freedesktop.Sdk.Extension.node24/x86_64/25.08
     - org.freedesktop.Sdk.Extension.openjdk/x86_64/25.08
+    - org.freedesktop.Sdk.Extension.openjdk25/x86_64/25.08
     - org.freedesktop.Sdk.Extension.openjdk21/x86_64/25.08
     - org.freedesktop.Sdk.Extension.openjdk17/x86_64/25.08
     - org.freedesktop.Sdk.Extension.rust-stable/x86_64/25.08
