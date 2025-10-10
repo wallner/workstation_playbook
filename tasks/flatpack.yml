@@ -25,6 +25,8 @@
     - org.gnome.World.Secrets
     - org.freedesktop.Sdk.Extension.golang/x86_64/25.08
     - org.freedesktop.Sdk.Extension.node24/x86_64/25.08
+    - org.freedesktop.Sdk.Extension.node22/x86_64/25.08
+    - org.freedesktop.Sdk.Extension.node20/x86_64/25.08
     - org.freedesktop.Sdk.Extension.openjdk/x86_64/25.08
     - org.freedesktop.Sdk.Extension.openjdk25/x86_64/25.08
     - org.freedesktop.Sdk.Extension.openjdk21/x86_64/25.08
