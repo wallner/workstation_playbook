@@ -51,9 +51,11 @@
     - NetworkManager-openvpn
     - loupe
     - lollypop
+    - papers
     - ptyxis # fedoras default. Make sure, it's there
     - seahorse
     - shotwell
+    - showtime
 - name: install adwaita qt themes
   dnf:
     state: present
