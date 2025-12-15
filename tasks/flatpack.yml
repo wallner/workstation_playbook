@@ -16,6 +16,7 @@
     state:  present
     method: user
     name:
+    - com.github.marhkb.Pods
     - com.jetbrains.IntelliJ-IDEA-Ultimate
     - com.mardojai.ForgeSparks
     - com.rafaelmardojai.Blanket

@@ -13,3 +13,7 @@
   yarn:
     name: deno
     global: yes
+- name: Install mermaid cli
+  yarn:
+    name: "@mermaid-js/mermaid-cli"
+    global: yes

@@ -61,7 +61,7 @@
     state: present
     name:
       - qadwaitadecorations-qt5
-      - qadwaitadecorations-qt6
+      - qt6-qtwayland-adwaita-decoration
 - name: install German spell checking support
   dnf:
     state: present
@@ -74,12 +74,14 @@
     state: present
     name:
     - deja-dup
-- name: install the gimp
-  ansible.builtin.dnf: name=gimp state=present
-- name: install inkscape
-  ansible.builtin.dnf: name=inkscape state=present
-- name: install ImageMagick
-  ansible.builtin.dnf: name=ImageMagick state=present
+- name: install the graphics and diagramming tools
+  dnf:
+    state: present
+    name:
+      - gimp
+      - graphviz
+      - inkscape
+      - ImageMagick 
 - name: install media codecs
   dnf:
     state: present
