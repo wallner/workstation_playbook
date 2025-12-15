@@ -81,7 +81,7 @@
       - gimp
       - graphviz
       - inkscape
-      - ImageMagick 
+      - ImageMagick
 - name: install media codecs
   dnf:
     state: present
@@ -182,6 +182,7 @@
       - file-devel
       - openssl-devel
       - uv
+      - zeal
 - name: install ldap-utils
   dnf: name=openldap-clients state=present
 - name: install p7zip
@@ -224,6 +225,9 @@
     name:
     - libvirt-client
     - virt-manager
+    - vagrant
+    - vagrant-libvirt
+    - virtiofsd
 - name: install container runtime and build environment
   dnf:
     state: present

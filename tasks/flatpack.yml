@@ -17,6 +17,7 @@
     method: user
     name:
     - com.github.marhkb.Pods
+    - com.jeffser.Alpaca
     - com.jetbrains.IntelliJ-IDEA-Ultimate
     - com.mardojai.ForgeSparks
     - com.rafaelmardojai.Blanket
