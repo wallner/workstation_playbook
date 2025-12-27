@@ -18,6 +18,8 @@
 
 - name: install a handful of go packages
   shell: "go install {{ item }}"
+  become: yes
+  become_user: "{{ user }}"
   environment:
     GOPATH: "{{ go_path }}"
   loop: 
