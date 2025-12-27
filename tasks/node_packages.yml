@@ -9,6 +9,10 @@
   yarn:
     name: "@google-cloud/functions"
     global: yes
+- name: Install the Gemini CLI tool
+  yarn:
+    name: "@google/gemini-cli"
+    global: yes
 - name: Install deno
   yarn:
     name: deno
