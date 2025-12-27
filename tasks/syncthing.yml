@@ -1,10 +1,9 @@
 ---
 - name: install syncthing
   dnf: name=syncthing state=present
-- name: configure autostart at login
-  file:
-    src: /usr/share/applications/syncthing-start.desktop
-    dest: /home/{{ user }}/.config/autostart/syncthing-start.desktop
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    state: link
+- name: configure syncthing to start at login using systemd
+  systemd_service:
+    name: syncthing
+    scope: user
+    enabled: true
+    state: started
