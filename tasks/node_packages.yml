@@ -1,23 +1,39 @@
 ---
-- name: Install "sfdx" CLI application
-  yarn:
-    name: sfdx-cli
-    global: yes
-    state: absent
-    # state: latest
-- name: Install the Node packages for google cloud functions
-  yarn:
+- name: Ensure XDG directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  become: yes
+  become_user: "{{ user }}"
+
+  loop:
+    - "{{ install_root }}"
+    - "{{ xdg_bin_home }}"
+
+- name: Install tools into isolated XDG subdirectories
+  community.general.npm:
+    name: "{{ item.name }}"
+    path: "{{ install_root }}/{{ item.bin }}"
+    state: present
+  become: yes
+  become_user: "{{ user }}"
+  loop: "{{ tools }}"
+
+- name: Symlink binaries to ~/.local/bin
+  file:
+    src: "{{ install_root }}/{{ item.bin }}/node_modules/.bin/{{ item.bin }}"
+    dest: "{{ xdg_bin_home }}/{{ item.bin }}"
+    state: link
+    force: yes
+  become: yes
+  become_user: "{{ user }}"
+  loop: "{{ tools }}"
+
+- name: Install Google Cloud Functions locally
+  community.general.npm:
     name: "@google-cloud/functions"
-    global: yes
-- name: Install the Gemini CLI tool
-  yarn:
-    name: "@google/gemini-cli"
-    global: yes
-- name: Install deno
-  yarn:
-    name: deno
-    global: yes
-- name: Install mermaid cli
-  yarn:
-    name: "@mermaid-js/mermaid-cli"
-    global: yes
+    path: "{{ install_root }}/cloud-functions"
+    state: present
+  become: yes
+  become_user: "{{ user }}"

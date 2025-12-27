@@ -6,6 +6,7 @@
   vars_files:
     - variables/application-versions.yml
     - variables/configuration.yml
+    - variables/node_tools.yml
   tasks:
     - name: install deps for ansible modules
       raw: dnf install -yq python-dnf
@@ -16,17 +17,17 @@
     - include_tasks: tasks/java.yml
     - include_tasks: tasks/cargo_packages.yml
     - include_tasks: tasks/go_packages.yml
-    - include_tasks: tasks/node_packages.yml
     - include_tasks: tasks/flatpack.yml
     - include_tasks: tasks/syncthing.yml
     - include_tasks: tasks/configure-gnome.yml
     - include_tasks: tasks/dotfiles.yml
     - include_tasks: tasks/sysctl.yml
+    - include_tasks: tasks/node_packages.yml
     - name: set the hostname
       hostname: name={{ hostname }}
     - name: Configure user
       ansible.builtin.user:
         name: "{{ user }}"
         shell: /bin/zsh
-        groups: docker
+        groups: docker, libvirt
         append: yes

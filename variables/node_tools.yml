@@ -1,0 +1,12 @@
+---
+# vars/node_tools.yml
+user_home: "/home/{{ user }}"
+xdg_data_home: "{{ user_home }}/.local/share"
+xdg_bin_home: "{{ user_home }}/.local/bin"
+install_root: "{{ xdg_data_home }}/node_tools"
+
+tools:
+  - { name: "@google/gemini-cli", bin: "gemini" }
+  - { name: "@mermaid-js/mermaid-cli", bin: "mmdc" }
+  # - { name: "deno-bin", bin: "deno" }
+  # - { name: "@salesforce/cli", bin: "sf" }
