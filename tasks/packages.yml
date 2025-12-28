@@ -1,156 +1,19 @@
 ---
 - name: upgrade all packages
-  dnf: name=* state=latest
-- name: install lshw
-  dnf: name=lshw state=present
-- name: install file sync infrastructure
-  dnf:
-    state: present
-    name:
-      - dropbox
-      - insync
-      - rclone
-- name: install keepassxc
-  dnf: name=keepassxc state=present
-- name: install browsers
-  dnf:
-    state: present
-    name:
-      - google-chrome-stable
-      - epiphany
-- name: install steam
-  dnf: name=steam state=present
-# Desktop working envronment
-- name: install gnome-shell extensions
-  dnf:
-    state: present
-    name:
-      - gnome-shell-extension-blur-my-shell
-      - gnome-shell-extension-caffeine
-      - gnome-shell-extension-gpaste
-- name: install gnome apps
-  dnf:
-    state: present
-    name:
-    - blackbox-terminal
-    - cheese
-    - geary
-    - drawing
-    - dconf-editor
-    - foliate
-    - ghostty
-    - gnome-backgrounds-extras
-    - gnome-tweak-tool
-    - gnome-boxes
-    - gnome-console # gnomes default. Make sure, it's there
-    - gnome-photos
-    - gnome-music
-    - gnome-sound-recorder
-    - gnome-power-manager
-    - menulibre
-    - NetworkManager-openvpn
-    - loupe
-    - lollypop
-    - papers
-    - ptyxis # fedoras default. Make sure, it's there
-    - seahorse
-    - shotwell
-    - showtime
-- name: install adwaita qt themes
-  dnf:
-    state: present
-    name:
-      - qadwaitadecorations-qt5
-      - qt6-qtwayland-adwaita-decoration
-- name: install German spell checking support
-  dnf:
-    state: present
-    name:
-      - libreoffice-langpack-de
-      - hunspell-de
-      - aspell-de
-- name: install deja-dup backup solution
-  dnf:
-    state: present
-    name:
-    - deja-dup
-- name: install the graphics and diagramming tools
-  dnf:
-    state: present
-    name:
-      - gimp
-      - graphviz
-      - inkscape
-      - ImageMagick
-- name: install media codecs
-  dnf:
-    state: present
-    name:
-    - gstreamer-ffmpeg
-    - gstreamer1-libav
-    - gstreamer1-vaapi
-    - gstreamer1-plugins-bad-free
-    - gstreamer1-plugins-bad-free-extras
-    - gstreamer1-plugins-bad-freeworld
-    - gstreamer1-plugins-base-tools
-    - gstreamer1-plugins-good
-    - gstreamer1-plugins-good-extras
-    - gstreamer1-plugins-ugly
-    - gstreamer1-plugins-ugly-free
-    - libmp4v2
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
 
-- name: install the awscli
-  dnf: name=awscli state=present
-- name: install google cloud sdk
+- name: Install System and Shell Utilities
   ansible.builtin.dnf:
     state: present
     name:
-    # - google-cloud-sdk
-    # - google-cloud-sdk-config-connector
-    # - google-cloud-sdk-app-engine-python
-    # - google-cloud-sdk-kubectl-oidc
-    # - google-cloud-sdk-minikube
-    # - google-cloud-sdk-datastore-emulator
-    # - google-cloud-sdk-skaffold
-    # - google-cloud-sdk-cbt
-    # - google-cloud-sdk-pubsub-emulator
-    # - google-cloud-sdk
-    # - google-cloud-sdk-cloud-build-local
-    # - google-cloud-sdk-datalab
-    # - google-cloud-sdk-app-engine-python-extras
-    # - google-cloud-sdk-app-engine-go
-    # - google-cloud-sdk-anthos-auth
-    # - google-cloud-sdk-bigtable-emulator
-    # - google-cloud-sdk-local-extract
-    # - google-cloud-sdk-spanner-emulator
-    # - google-cloud-sdk-firestore-emulator
-    # - google-cloud-sdk-app-engine-grpc
-    # - google-cloud-sdk-app-engine-java
-    # - google-cloud-sdk-kpt
-    # - google-cloud-sdk-gke-gcloud-auth-plugin
-    # - google-cloud-cli-gke-gcloud-auth-plugin
-    - kubectl
-# Games
-- name: install games
-  dnf:
-    state: present
-    name:
-    - aisleriot
-    - five-or-more
-    - iagno
-    - gnome-mahjongg
-    - gnome-mines
-    - gnome-tetravex
-    - nethack
-    - wesnoth
-# shell working enviroment
-- name: Install modern shell environment
-  dnf:
-    state: present
-    name:
+      - awscli
       - bat
       - chafa
+      - compsize
       - direnv
+      - dropbox
       - fd-find
       - fzf
       - gh
@@ -159,99 +22,135 @@
       - gpaste-zsh-completion
       - htop
       - httpie
+      - insync
+      - kubectl
       - lnav
+      - lshw
+      - nvme-cli
+      - openldap-clients
+      - p7zip
+      - rclone
       - ripgrep
       - sensible-utils
+      - smartmontools
       - starship
-      - stress-ng
       - stow
-      - tmux
+      - stress-ng
       - tig
+      - tmux
       - wl-clipboard
       - xclip
       - zoxide
       - zsh
       - zsh-autosuggestions
       - zsh-syntax-highlighting
-- name: install various developent tools
-  dnf:
+
+- name: Install Desktop, Media, and GUI Applications
+  ansible.builtin.dnf:
+    state: present
+    name:
+      - aisleriot
+      - aspell-de
+      - blackbox-terminal
+      - calibre
+      - cheese
+      - dconf-editor
+      - deja-dup
+      - drawing
+      - epiphany
+      - ffmpeg
+      - five-or-more
+      - foliate
+      - geary
+      - ghostty
+      - gimp
+      - gnome-backgrounds-extras
+      - gnome-boxes
+      - gnome-console
+      - gnome-mahjongg
+      - gnome-mines
+      - gnome-music
+      - gnome-photos
+      - gnome-power-manager
+      - gnome-shell-extension-blur-my-shell
+      - gnome-shell-extension-caffeine
+      - gnome-shell-extension-gpaste
+      - gnome-sound-recorder
+      - gnome-tetravex
+      - gnome-tweak-tool
+      - google-chrome-stable
+      - graphviz
+      - gstreamer-ffmpeg
+      - gstreamer1-libav
+      - gstreamer1-plugins-bad-free
+      - gstreamer1-plugins-bad-free-extras
+      - gstreamer1-plugins-bad-freeworld
+      - gstreamer1-plugins-base-tools
+      - gstreamer1-plugins-good
+      - gstreamer1-plugins-good-extras
+      - gstreamer1-plugins-ugly
+      - gstreamer1-plugins-ugly-free
+      - gstreamer1-vaapi
+      - hunspell-de
+      - iagno
+      - ImageMagick
+      - inkscape
+      - intel-gpu-tools
+      - intel-media-driver
+      - keepassxc
+      - libavcodec-freeworld
+      - libmp4v2
+      - libreoffice-langpack-de
+      - lollypop
+      - loupe
+      - menulibre
+      - mesa-va-drivers-freeworld
+      - nethack
+      - NetworkManager-openvpn
+      - papers
+      - ptyxis
+      - qadwaitadecorations-qt5
+      - qt6-qtwayland-adwaita-decoration
+      - seahorse
+      - shotwell
+      - showtime
+      - steam
+      - transmission-gtk
+      - wesnoth
+
+- name: Install Development, Virtualization, and Container Tools
+  ansible.builtin.dnf:
     state: present
     name:
       - autoconf
-      - ncurses-devel
-      - file-devel
-      - openssl-devel
-      - uv
-      - zeal
-- name: install ldap-utils
-  dnf: name=openldap-clients state=present
-- name: install p7zip
-  dnf: name=p7zip state=present
-- name: install smartmontools
-  dnf: name=smartmontools state=present
-- name: install compsize
-  dnf: name=compsize state=present
-- name: install nvme command line tools
-  dnf: name=nvme-cli state=present
-- name: install calibre e-book management
-  dnf: name=calibre state=present
-- name: install wireshark
-  dnf: name=wireshark state=present
-- name: install transmission bittorrent client
-  dnf: name=transmission-gtk state=present
-- name: install vim and plugins
-  dnf:
-    state: present
-    name:
-      - vim-enhanced
-      - vim-X11
       - awesome-vim-colorschemes
+      - buildah
+      - file-devel
+      - libvirt-client
+      - ncurses-devel
+      - nodejs
+      - openssl-devel
+      - podman
+      - podman-compose
+      - podman-docker
+      - podman-manpages
+      - postgresql
+      - skopeo
+      - sqlitebrowser
+      - typescript
+      - uv
+      - vagrant
+      - vagrant-libvirt
+      - vim-X11
       - vim-airline
       - vim-commentary
       - vim-devicons
+      - vim-enhanced
       - vim-fugitive
       - vim-gitgutter
       - vim-nerdtree
-- name: install javascript environment
-  dnf:
-    state: present
-    name:
-      - nodejs
+      - virt-manager
+      - virtiofsd
+      - wireshark
       - yarnpkg
-      - typescript
-- name: install virtualization
-  dnf:
-    state: present
-    name:
-    - libvirt-client
-    - virt-manager
-    - vagrant
-    - vagrant-libvirt
-    - virtiofsd
-- name: install container runtime and build environment
-  dnf:
-    state: present
-    name:
-    - podman
-    - podman-docker
-    - podman-compose
-    - podman-manpages
-    - buildah
-    - skopeo
-- name: install database tools
-  dnf:
-    state: present
-    name:
-    - sqlitebrowser
-    - postgresql
-- name: install Intel media driver
-  dnf:
-    state: present
-    allowerasing: true
-    name:
-      - mesa-va-drivers-freeworld
-      - intel-media-driver
-      - intel-gpu-tools
-      - ffmpeg
-      - libavcodec-freeworld
-
+      - zeal

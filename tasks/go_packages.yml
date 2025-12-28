@@ -1,29 +1,29 @@
 ---
 - name: install go language and docs
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
     - golang
     - golang-docs
+  become: true
 
 - name: check go version
-  command: go version
+  ansible.builtin.command: go version
   register: result
   changed_when: no
   ignore_errors: true
 
 - name: "Set GO path"
-  set_fact:
-    go_path: "{{ lookup('env', 'GOPATH') | default(ansible_env.HOME+'/go', true) }}"
+  ansible.builtin.set_fact:
+    go_path: "{{ lookup('env', 'GOPATH') | default(ansible_env.HOME+'/workspace/golang/bin', true) }}"
 
 - name: install a handful of go packages
-  shell: "go install {{ item }}"
-  become: yes
-  become_user: "{{ user }}"
+  ansible.builtin.shell: "go install -v {{ item }}"
   environment:
     GOPATH: "{{ go_path }}"
-  loop: 
+  register: go_install_result
+  changed_when: "go_install_result.stderr | length > 0"
+  loop:
     - github.com/doronbehar/pistol/cmd/pistol@latest
     - github.com/remotemobprogramming/mob/v5@latest
     - github.com/vishen/go-chromecast@latest
-

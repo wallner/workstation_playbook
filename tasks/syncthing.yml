@@ -1,6 +1,8 @@
 ---
 - name: install syncthing
   dnf: name=syncthing state=present
+  become: true
+
 - name: configure syncthing to start at login using systemd
   systemd_service:
     name: syncthing

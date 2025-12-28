@@ -4,8 +4,6 @@
     path: "{{ item }}"
     state: directory
     mode: '0755'
-  become: yes
-  become_user: "{{ user }}"
 
   loop:
     - "{{ install_root }}"
@@ -16,8 +14,6 @@
     name: "{{ item.name }}"
     path: "{{ install_root }}/{{ item.bin }}"
     state: present
-  become: yes
-  become_user: "{{ user }}"
   loop: "{{ tools }}"
 
 - name: Symlink binaries to ~/.local/bin
@@ -26,8 +22,6 @@
     dest: "{{ xdg_bin_home }}/{{ item.bin }}"
     state: link
     force: yes
-  become: yes
-  become_user: "{{ user }}"
   loop: "{{ tools }}"
 
 - name: Install Google Cloud Functions locally
@@ -35,5 +29,3 @@
     name: "@google-cloud/functions"
     path: "{{ install_root }}/cloud-functions"
     state: present
-  become: yes
-  become_user: "{{ user }}"

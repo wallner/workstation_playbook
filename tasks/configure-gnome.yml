@@ -33,6 +33,3 @@
     dconf:
       key: "/org/gnome/desktop/interface/font-antialiasing"
       value: "'rgba'"
-  become: true
-  become_user: "{{ user }}"
-
