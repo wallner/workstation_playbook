@@ -26,9 +26,45 @@
     - mikelo2/gh
     - pgdev/ghostty
 
-- name: install provided repofiles
-  copy: src=files/{{ item }} dest=/etc/yum.repos.d/ owner=root
-  loop:
-  - google-cloud-cli.repo
-  - insync.repo
+- name: Add Google Cloud CLI repository
+  yum_repository:
+    name: google-cloud-cli
+    description: Google Cloud CLI
+    baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64
+    enabled: yes
+    gpgcheck: yes
+    repo_gpgcheck: no
+    gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+
+- name: Add Insync repository
+  yum_repository:
+    name: insync
+    description: Insync Repo
+    baseurl: http://yum.insync.io/fedora/$releasever/
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://d2t3ff60b2tol4.cloudfront.net/repomd.xml.key
+    metadata_expire: 120m
+
+- name: Add Google Chrome repository
+  yum_repository:
+    name: google-chrome
+    description: Google Chrome
+    baseurl: http://dl.google.com/linux/chrome/rpm/stable/x86_64
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://dl.google.com/linux/linux_signing_key.pub
+
+- name: Add GitHub Desktop (ShiftKey) repository
+  yum_repository:
+    name: shiftkey_desktop
+    description: GitHub Desktop (ShiftKey)
+    baseurl: https://packagecloud.io/shiftkey/desktop/fedora/$releasever/$basearch
+    enabled: yes
+    gpgcheck: yes
+    repo_gpgcheck: yes
+    gpgkey: https://packagecloud.io/shiftkey/desktop/gpgkey
+    sslverify: yes
+    sslcacert: /etc/pki/tls/certs/ca-bundle.crt
+    metadata_expire: 300
 
