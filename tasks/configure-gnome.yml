@@ -33,3 +33,20 @@
     dconf:
       key: "/org/gnome/desktop/interface/font-antialiasing"
       value: "'rgba'"
+
+- name: Install Gnome Extensions
+  include_role:
+    name: luizgavalda.gnome_extensions
+  vars:
+    gnome_extension_ids: [2236, 1070, 7048, 5470]
+
+- name: Get all installed Gnome extensions
+  find:
+    paths: "{{ ansible_user_dir }}/.local/share/gnome-shell/extensions"
+    file_type: directory
+  register: installed_extensions
+
+- name: Enable all installed Gnome extensions
+  command: "gnome-extensions enable {{ item.path | basename }}"
+  loop: "{{ installed_extensions.files }}"
+  changed_when: false
