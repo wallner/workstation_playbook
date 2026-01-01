@@ -3,6 +3,7 @@
   ansible.builtin.dnf:
     name: "*"
     state: latest
+  tags: [never, upgrade]
 
 - name: Install System and Shell Utilities
   ansible.builtin.dnf:
