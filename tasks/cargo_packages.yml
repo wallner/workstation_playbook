@@ -1,12 +1,13 @@
 ---
 - name: install cargo
   dnf: name=cargo state=present
+  become: true
 - name: install tod todoist client
   community.general.cargo:
     name: tod
-    path: /usr/local
+    path: ~/.local
     state: latest
 - name: install eza, a modern replacement for ls
   community.general.cargo:
     name: eza
-    path: /usr/local
+    path: ~/.local
