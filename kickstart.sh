@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/usr/bin/env bash
 TARGET_USER=${1:-$(whoami)}
 
 # Install dependencies
@@ -9,7 +9,7 @@ ansible-galaxy collection install community.general -p collections
 ansible-galaxy role install luizgavalda.gnome_extensions -p roles
 
 # Run playbook. Only ask for sudo password if in an interactive terminal.
-ANSIBLE_FLAGS="--tags upgrade"
+ANSIBLE_FLAGS="--tags all,upgrade"
 if [ -t 0 ]; then
     ANSIBLE_FLAGS="$ANSIBLE_FLAGS -K"
 fi
