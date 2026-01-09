@@ -1,7 +1,6 @@
 ---
 - hosts: localhost
   connection: local
-  user: wallner
   vars_files:
     - variables/application-versions.yml
     - variables/configuration.yml
@@ -22,7 +21,6 @@
     - ansible.builtin.import_tasks: tasks/java.yml
       become: true
     - ansible.builtin.import_tasks: tasks/cargo_packages.yml
-      become: true
     - ansible.builtin.import_tasks: tasks/go_packages.yml
     - ansible.builtin.import_tasks: tasks/flatpack.yml
     - ansible.builtin.import_tasks: tasks/syncthing.yml
