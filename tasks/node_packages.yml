@@ -13,7 +13,7 @@
   community.general.npm:
     name: "{{ item.name }}"
     path: "{{ install_root }}/{{ item.bin }}"
-    state: present
+    state: latest
   loop: "{{ tools }}"
 
 - name: Symlink binaries to ~/.local/bin
@@ -28,4 +28,4 @@
   community.general.npm:
     name: "@google-cloud/functions"
     path: "{{ install_root }}/cloud-functions"
-    state: present
+    state: latest
