@@ -25,7 +25,7 @@
     force: no
     content: |
       {
-        "theme": "dark",
+        "theme": "Default Light",
         "updateCheck": true
       }
 - name: fix permissions of .ssh/options
