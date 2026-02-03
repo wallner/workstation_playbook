@@ -8,5 +8,6 @@ install_root: "{{ xdg_data_home }}/node_tools"
 tools:
   - { name: "@google/gemini-cli", bin: "gemini" }
   - { name: "@mermaid-js/mermaid-cli", bin: "mmdc" }
+  - { name: "@anthropic-ai/claude-code", bin: "claude" }
   # - { name: "deno-bin", bin: "deno" }
   # - { name: "@salesforce/cli", bin: "sf" }
