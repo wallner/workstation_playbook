@@ -5,6 +5,7 @@
     - variables/application-versions.yml
     - variables/configuration.yml
     - variables/node_tools.yml
+    - variables/packages.yml
   tasks:
     - name: install deps for ansible modules
       ansible.builtin.command: dnf install -yq python-dnf
