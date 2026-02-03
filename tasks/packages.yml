@@ -126,8 +126,13 @@
       - autoconf
       - awesome-vim-colorschemes
       - buildah
+      - boost-devel
+      - cyrus-sasl-devel
       - file-devel
+      - gcc-c++
+      - libbson-devel
       - libvirt-client
+      - mongo-c-driver-devel
       - ncurses-devel
       - nodejs
       - openssl-devel
@@ -140,6 +145,7 @@
       - sqlitebrowser
       - typescript
       - uv
+      - utf8proc-devel
       - vagrant
       - vagrant-libvirt
       - vim-X11
