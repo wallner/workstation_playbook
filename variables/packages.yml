@@ -7,6 +7,7 @@ packages_system:
   - direnv
   - dropbox
   - fd-find
+  - flatpak
   - fzf
   - gh
   - git-all
@@ -99,7 +100,6 @@ packages_desktop:
   - papers
   - ptyxis
   - qadwaitadecorations-qt5
-  - qt6-qtwayland-adwaita-decoration
   - seahorse
   - shotwell
   - showtime

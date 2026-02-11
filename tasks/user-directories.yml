@@ -1,0 +1,16 @@
+---
+- name: prepare standard directory layout
+  ansible.builtin.file:
+    path: "/home/{{ user }}/{{ item }}"
+    state: directory
+    mode: '0755'
+    owner: "{{ user }}"
+  loop:
+    - .local
+    - .local/bin
+    - .config
+    - .ssh
+    - workspace
+    - workspace/golang
+    - workspace/golang/bin
+    - depot

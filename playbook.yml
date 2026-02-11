@@ -12,6 +12,7 @@
       register: dnf_install_result
       changed_when: "'Nothing to do' not in dnf_install_result.stdout"
       become: true
+    - ansible.builtin.import_tasks: tasks/user-directories.yml
     - ansible.builtin.import_tasks: tasks/repositories.yml
       become: true
     - ansible.builtin.import_tasks: tasks/packages.yml
@@ -37,6 +38,6 @@
       ansible.builtin.user:
         name: "{{ user }}"
         shell: /bin/zsh
-        groups: docker, libvirt
+        groups: libvirt
         append: yes
       become: true

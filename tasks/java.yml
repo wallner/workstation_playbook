@@ -5,12 +5,13 @@
     name:
       - java-21-openjdk
       - java-25-openjdk
+      - java-21-openjdk-devel
+      - java-25-openjdk-devel
       - java-21-openjdk-javadoc
       - java-25-openjdk-javadoc
       - java-21-openjdk-jmods
       - java-25-openjdk-jmods
       - java-25-openjdk-src
-      - maven-openjdk21
-      - maven-openjdk25
+      - maven
       - openjdk-asmtools
       - openjdk-asmtools-javadoc
