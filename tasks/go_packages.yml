@@ -1,19 +1,19 @@
 ---
-- name: install go language and docs
+- name: Install Go language and docs
   ansible.builtin.dnf:
     state: present
     name:
-    - golang
-    - golang-docs
+      - golang
+      - golang-docs
   become: true
 
-- name: check go version
+- name: Check Go version
   ansible.builtin.command: go version
   register: result
-  changed_when: no
+  changed_when: false
   ignore_errors: true
 
-- name: install a handful of go packages
+- name: Install a handful of Go packages
   ansible.builtin.command: "go install {{ item }}"
   environment:
     GOPATH: "/home/{{ user }}/workspace/golang"

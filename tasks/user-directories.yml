@@ -1,5 +1,5 @@
 ---
-- name: prepare standard directory layout
+- name: Prepare standard directory layout
   ansible.builtin.file:
     path: "/home/{{ user }}/{{ item }}"
     state: directory

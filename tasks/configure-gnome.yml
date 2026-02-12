@@ -1,41 +1,42 @@
 ---
-- block:
-  - name: center new windows
-    community.general.dconf:
-      key: '/org/gnome/mutter/center-new-windows'
-      value: 'true'
-      state: present
-  - name: enable compose key
-    community.general.dconf:
-      key: '/org/gnome/desktop/input-sources/xkb-options'
-      value: "['caps:shift_nocancel', 'compose:caps']"
-  - name: Disable conflicting keyboard shortcut switch to workspace left
-    community.general.dconf:
-      key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-left"
-      value: "['<Super>Page_Up', '<Super><Alt>Left']"
-  - name: Disable conflicting keyboard shortcut switch to workspace right
-    community.general.dconf:
-      key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-right"
-      value: "['<Super>Page_Down', '<Super><Alt>Right']"
-  - name: Disable conflicting keyboard shortcut of GPaste
-    community.general.dconf:
-      key: "/org/gnome/GPaste/make-password"
-      value: "''"
-  - name: Set monoface font to 'Adwaita Mono' (The default)
-    community.general.dconf:
-      key: "/org/gnome/desktop/interface/monospace-font-name"
-      value: '"Adwaita Mono 11"'
-  - name: set font hinting to slight
-    community.general.dconf:
-      key: "/org/gnome/desktop/interface/font-hinting"
-      value: "'slight'"
-  - name: set antialiasing to rgba
-    community.general.dconf:
-      key: "/org/gnome/desktop/interface/font-antialiasing"
-      value: "'rgba'"
+- name: Configure GNOME desktop settings
+  block:
+    - name: Center new windows
+      community.general.dconf:
+        key: '/org/gnome/mutter/center-new-windows'
+        value: 'true'
+        state: present
+    - name: Enable compose key
+      community.general.dconf:
+        key: '/org/gnome/desktop/input-sources/xkb-options'
+        value: "['caps:shift_nocancel', 'compose:caps']"
+    - name: Disable conflicting keyboard shortcut switch to workspace left
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-left"
+        value: "['<Super>Page_Up', '<Super><Alt>Left']"
+    - name: Disable conflicting keyboard shortcut switch to workspace right
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-right"
+        value: "['<Super>Page_Down', '<Super><Alt>Right']"
+    - name: Disable conflicting keyboard shortcut of GPaste
+      community.general.dconf:
+        key: "/org/gnome/GPaste/make-password"
+        value: "''"
+    - name: Set monoface font to 'Adwaita Mono' (The default)
+      community.general.dconf:
+        key: "/org/gnome/desktop/interface/monospace-font-name"
+        value: '"Adwaita Mono 11"'
+    - name: Set font hinting to slight
+      community.general.dconf:
+        key: "/org/gnome/desktop/interface/font-hinting"
+        value: "'slight'"
+    - name: Set antialiasing to rgba
+      community.general.dconf:
+        key: "/org/gnome/desktop/interface/font-antialiasing"
+        value: "'rgba'"
 
 - name: Install Gnome Extensions
-  include_role:
+  ansible.builtin.include_role:
     name: luizgavalda.gnome_extensions
   vars:
     gnome_extension_ids: [2236, 1070, 7048, 5470]

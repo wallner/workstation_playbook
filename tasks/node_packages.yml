@@ -22,7 +22,7 @@
     src: "{{ install_root }}/{{ item.bin }}/bin/{{ item.bin }}"
     dest: "{{ xdg_bin_home }}/{{ item.bin }}"
     state: link
-    force: yes
+    force: true
   loop: "{{ tools }}"
 
 - name: Install Google Cloud Functions locally

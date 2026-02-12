@@ -1,5 +1,5 @@
 ---
-- name: install font coprs
+- name: Install font COPRs
   community.general.copr:
     name: "{{ item }}"
   become: true
@@ -7,33 +7,34 @@
     - adrienverge/some-nice-fonts
     - aquacash5/nerd-fonts
 
-- name: install freetype-freeworld
+- name: Install freetype-freeworld
   ansible.builtin.dnf:
     name: freetype-freeworld
     state: present
   become: true
 
-- name: install fonts
+- name: Install fonts
   ansible.builtin.dnf:
     state: present
     name:
-    - cascadia-fonts-all
-    - cascadia-code-nerd-fonts
-    - cascadia-mono-nerd-fonts
-    - jetbrains-mono-fonts-all
-    - jet-brains-mono-nerd-fonts
-    - fontawesome-fonts
-    - fontawesome-fonts-web
-    - powerline-fonts
-    - some-nice-fonts
-    - source-code-pro-nerd-fonts
-    - terminus-fonts-console
-    - terminus-fonts
-    - terminus-nerd-fonts
+      - cascadia-fonts-all
+      - cascadia-code-nerd-fonts
+      - cascadia-mono-nerd-fonts
+      - jetbrains-mono-fonts-all
+      - jet-brains-mono-nerd-fonts
+      - fontawesome-fonts
+      - fontawesome-fonts-web
+      - powerline-fonts
+      - some-nice-fonts
+      - source-code-pro-nerd-fonts
+      - terminus-fonts-console
+      - terminus-fonts
+      - terminus-nerd-fonts
   become: true
 
-- name: activate lcd default filter
+- name: Activate LCD default filter
   ansible.builtin.lineinfile:
     path: "~/.Xresources"
     line: "Xft.lcdfilter: lcddefault"
-    create: yes
+    create: true
+    mode: '0644'

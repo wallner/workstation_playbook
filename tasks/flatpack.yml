@@ -28,13 +28,13 @@
   register: flatpak_sdk_result
   changed_when: "'is already installed' not in flatpak_sdk_result.stderr"
   loop:
-      - runtime/org.freedesktop.Sdk.Extension.golang/x86_64/{{ flatpak_sdk_branch }}
-      - runtime/org.freedesktop.Sdk.Extension.node24/x86_64/{{ flatpak_sdk_branch }}
-      - runtime/org.freedesktop.Sdk.Extension.node22/x86_64/{{ flatpak_sdk_branch }}
-      - runtime/org.freedesktop.Sdk.Extension.node20/x86_64/{{ flatpak_sdk_branch }}
-      - runtime/org.freedesktop.Sdk.Extension.openjdk/x86_64/{{ flatpak_sdk_branch }}
-      - runtime/org.freedesktop.Sdk.Extension.openjdk25/x86_64/{{ flatpak_sdk_branch }}
-      - runtime/org.freedesktop.Sdk.Extension.openjdk21/x86_64/{{ flatpak_sdk_branch }}
-      - runtime/org.freedesktop.Sdk.Extension.openjdk17/x86_64/{{ flatpak_sdk_branch }}
-      - runtime/org.freedesktop.Sdk.Extension.rust-stable/x86_64/{{ flatpak_sdk_branch }}
-      - runtime/org.freedesktop.Sdk.Extension.typescript/x86_64/{{ flatpak_sdk_branch }}
+    - runtime/org.freedesktop.Sdk.Extension.golang/x86_64/{{ flatpak_sdk_branch }}
+    - runtime/org.freedesktop.Sdk.Extension.node24/x86_64/{{ flatpak_sdk_branch }}
+    - runtime/org.freedesktop.Sdk.Extension.node22/x86_64/{{ flatpak_sdk_branch }}
+    - runtime/org.freedesktop.Sdk.Extension.node20/x86_64/{{ flatpak_sdk_branch }}
+    - runtime/org.freedesktop.Sdk.Extension.openjdk/x86_64/{{ flatpak_sdk_branch }}
+    - runtime/org.freedesktop.Sdk.Extension.openjdk25/x86_64/{{ flatpak_sdk_branch }}
+    - runtime/org.freedesktop.Sdk.Extension.openjdk21/x86_64/{{ flatpak_sdk_branch }}
+    - runtime/org.freedesktop.Sdk.Extension.openjdk17/x86_64/{{ flatpak_sdk_branch }}
+    - runtime/org.freedesktop.Sdk.Extension.rust-stable/x86_64/{{ flatpak_sdk_branch }}
+    - runtime/org.freedesktop.Sdk.Extension.typescript/x86_64/{{ flatpak_sdk_branch }}

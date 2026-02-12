@@ -9,6 +9,7 @@
   ansible.builtin.git:
     repo: https://github.com/wallner/dotfiles.git
     dest: "/home/{{ user }}/depot/dotfiles"
+    version: main
 
 - name: Run stow
   ansible.builtin.command: "stow --dir /home/{{ user }}/depot --target /home/{{ user }} dotfiles --verbose=2"
@@ -24,13 +25,14 @@
 - name: Deploy Gemini config (if missing)
   ansible.builtin.copy:
     dest: "/home/{{ user }}/.gemini/settings.json"
-    force: no
+    force: false
+    mode: '0644'
     content: |
       {
         "theme": "Default Light",
         "updateCheck": true
       }
-- name: fix permissions of .ssh/options
+- name: Fix permissions of .ssh/config
   ansible.builtin.file:
     path: "/home/{{ user }}/.ssh/config"
     mode: '0600'
@@ -39,7 +41,7 @@
   register: result
   changed_when: false
 
-- name: configure theme watcher service to start at login using systemd
+- name: Configure theme watcher service to start at login using systemd
   ansible.builtin.systemd_service:
     name: theme-watcher
     scope: user

@@ -1,11 +1,11 @@
 ---
-- name: install the rpmfusion repo packages
+- name: Install the RPMFusion repo packages
   ansible.builtin.dnf:
     state: present
     disable_gpg_check: true
     name:
-    - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm
-    - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm
+      - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm
+      - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm
 
 - name: Enable various COPRs
   community.general.copr:
@@ -20,9 +20,9 @@
     name: google-cloud-cli
     description: Google Cloud CLI
     baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64
-    enabled: yes
-    gpgcheck: yes
-    repo_gpgcheck: no
+    enabled: true
+    gpgcheck: true
+    repo_gpgcheck: false
     gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
 - name: Add Insync repository
@@ -30,8 +30,8 @@
     name: insync
     description: Insync Repo
     baseurl: http://yum.insync.io/fedora/$releasever/
-    enabled: yes
-    gpgcheck: yes
+    enabled: true
+    gpgcheck: true
     gpgkey: https://d2t3ff60b2tol4.cloudfront.net/repomd.xml.key
     metadata_expire: 120m
 
@@ -40,8 +40,8 @@
     name: google-chrome
     description: Google Chrome
     baseurl: http://dl.google.com/linux/chrome/rpm/stable/x86_64
-    enabled: yes
-    gpgcheck: yes
+    enabled: true
+    gpgcheck: true
     gpgkey: https://dl.google.com/linux/linux_signing_key.pub
 
 - name: Add GitHub Desktop (ShiftKey) repository
@@ -49,10 +49,10 @@
     name: shiftkey_desktop
     description: GitHub Desktop (ShiftKey)
     baseurl: https://packagecloud.io/shiftkey/desktop/fedora/$releasever/$basearch
-    enabled: yes
-    gpgcheck: yes
-    repo_gpgcheck: yes
+    enabled: true
+    gpgcheck: true
+    repo_gpgcheck: true
     gpgkey: https://packagecloud.io/shiftkey/desktop/gpgkey
-    sslverify: yes
+    sslverify: true
     sslcacert: /etc/pki/tls/certs/ca-bundle.crt
     metadata_expire: 300

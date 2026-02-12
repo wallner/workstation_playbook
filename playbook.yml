@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Provision Fedora workstation
+  hosts: localhost
   connection: local
   vars_files:
     - variables/application-versions.yml
@@ -7,51 +8,66 @@
     - variables/node_tools.yml
     - variables/packages.yml
   tasks:
-    - name: install python dnf bindings (bootstrap)
+    - name: Install python DNF bindings (bootstrap)
       ansible.builtin.command: dnf install -y python3-dnf
       register: dnf_bootstrap
       changed_when: "'Nothing to do' not in dnf_bootstrap.stdout"
       become: true
-    - ansible.builtin.import_tasks: tasks/user-directories.yml
+    - name: Import user directory tasks
+      ansible.builtin.import_tasks: tasks/user-directories.yml
       tags: [directories]
-    - ansible.builtin.import_tasks: tasks/repositories.yml
+    - name: Import repository tasks
+      ansible.builtin.import_tasks: tasks/repositories.yml
       become: true
       tags: [repositories]
-    - ansible.builtin.import_tasks: tasks/packages.yml
+    - name: Import package tasks
+      ansible.builtin.import_tasks: tasks/packages.yml
       become: true
       tags: [packages]
-    - ansible.builtin.import_tasks: tasks/proton.yml
+    - name: Import ProtonVPN tasks
+      ansible.builtin.import_tasks: tasks/proton.yml
       become: true
       tags: [proton]
-    - ansible.builtin.import_tasks: tasks/font-setup.yml
+    - name: Import font setup tasks
+      ansible.builtin.import_tasks: tasks/font-setup.yml
       tags: [fonts]
-    - ansible.builtin.import_tasks: tasks/java.yml
+    - name: Import Java tasks
+      ansible.builtin.import_tasks: tasks/java.yml
       become: true
       tags: [java]
-    - ansible.builtin.import_tasks: tasks/cargo_packages.yml
+    - name: Import Cargo package tasks
+      ansible.builtin.import_tasks: tasks/cargo_packages.yml
       tags: [cargo]
-    - ansible.builtin.import_tasks: tasks/go_packages.yml
+    - name: Import Go package tasks
+      ansible.builtin.import_tasks: tasks/go_packages.yml
       tags: [go]
-    - ansible.builtin.import_tasks: tasks/flatpack.yml
+    - name: Import Flatpak tasks
+      ansible.builtin.import_tasks: tasks/flatpack.yml
       tags: [flatpak]
-    - ansible.builtin.import_tasks: tasks/syncthing.yml
+    - name: Import Syncthing tasks
+      ansible.builtin.import_tasks: tasks/syncthing.yml
       tags: [syncthing]
-    - ansible.builtin.import_tasks: tasks/configure-gnome.yml
+    - name: Import GNOME configuration tasks
+      ansible.builtin.import_tasks: tasks/configure-gnome.yml
       tags: [gnome]
-    - ansible.builtin.import_tasks: tasks/dotfiles.yml
+    - name: Import dotfiles tasks
+      ansible.builtin.import_tasks: tasks/dotfiles.yml
       tags: [dotfiles]
-    - ansible.builtin.import_tasks: tasks/sysctl.yml
+    - name: Import sysctl tasks
+      ansible.builtin.import_tasks: tasks/sysctl.yml
       become: true
       tags: [sysctl]
-    - ansible.builtin.import_tasks: tasks/node_packages.yml
+    - name: Import Node.js package tasks
+      ansible.builtin.import_tasks: tasks/node_packages.yml
       tags: [node_packages]
-    - name: set the hostname
-      ansible.builtin.hostname: name={{ hostname }}
+    - name: Set the hostname
+      ansible.builtin.hostname:
+        name: "{{ hostname }}"
       become: true
     - name: Configure user
       ansible.builtin.user:
         name: "{{ user }}"
         shell: /bin/zsh
         groups: libvirt
-        append: yes
+        append: true
       become: true

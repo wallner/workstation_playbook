@@ -1,5 +1,5 @@
 ---
-- name: install Java
+- name: Install Java
   ansible.builtin.dnf:
     state: present
     name:

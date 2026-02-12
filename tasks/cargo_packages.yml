@@ -1,15 +1,15 @@
 ---
-- name: install cargo
+- name: Install cargo
   ansible.builtin.dnf:
     name: cargo
     state: present
   become: true
-- name: install tod todoist client
+- name: Install tod todoist client
   community.general.cargo:
     name: tod
     path: "/home/{{ user }}/.local"
     state: latest
-- name: install eza, a modern replacement for ls
+- name: Install eza, a modern replacement for ls
   community.general.cargo:
     name: eza
     path: "/home/{{ user }}/.local"
