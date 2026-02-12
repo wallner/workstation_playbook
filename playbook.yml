@@ -7,10 +7,10 @@
     - variables/node_tools.yml
     - variables/packages.yml
   tasks:
-    - name: install deps for ansible modules
-      ansible.builtin.command: dnf install -yq python-dnf
-      register: dnf_install_result
-      changed_when: "'Nothing to do' not in dnf_install_result.stdout"
+    - name: install python dnf bindings (bootstrap)
+      ansible.builtin.command: dnf install -y python3-dnf
+      register: dnf_bootstrap
+      changed_when: "'Nothing to do' not in dnf_bootstrap.stdout"
       become: true
     - ansible.builtin.import_tasks: tasks/user-directories.yml
       tags: [directories]

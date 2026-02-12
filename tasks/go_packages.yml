@@ -13,14 +13,11 @@
   changed_when: no
   ignore_errors: true
 
-- name: "Set GO path"
-  ansible.builtin.set_fact:
-    go_path: "{{ lookup('env', 'GOPATH') | default(ansible_env.HOME+'/workspace/golang/bin', true) }}"
-
 - name: install a handful of go packages
-  ansible.builtin.shell: "go install -v {{ item }}"
+  ansible.builtin.shell: "go install {{ item }}"
   environment:
-    GOPATH: "{{ go_path }}"
+    GOPATH: "/home/{{ user }}/workspace/golang"
+    GOBIN: "/home/{{ user }}/workspace/golang/bin"
   register: go_install_result
   changed_when: "go_install_result.stderr | length > 0"
   loop:

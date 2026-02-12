@@ -40,13 +40,20 @@
   vars:
     gnome_extension_ids: [2236, 1070, 7048, 5470]
 
+- name: Get enabled Gnome extensions
+  ansible.builtin.command: "gnome-extensions list --enabled"
+  register: enabled_extensions
+  changed_when: false
+  failed_when: false
+
 - name: Get all installed Gnome extensions
-  find:
-    paths: "{{ ansible_user_dir }}/.local/share/gnome-shell/extensions"
+  ansible.builtin.find:
+    paths: "/home/{{ user }}/.local/share/gnome-shell/extensions"
     file_type: directory
   register: installed_extensions
 
-- name: Enable all installed Gnome extensions
-  command: "gnome-extensions enable {{ item.path | basename }}"
+- name: Enable installed Gnome extensions (if not already enabled)
+  ansible.builtin.command: "gnome-extensions enable {{ item.path | basename }}"
   loop: "{{ installed_extensions.files }}"
-  changed_when: false
+  when: "item.path | basename not in enabled_extensions.stdout"
+  changed_when: true
