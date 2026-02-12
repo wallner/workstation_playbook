@@ -1,0 +1,6 @@
+---
+profile: production
+
+exclude_paths:
+  - roles/luizgavalda.gnome_extensions/
+  - collections/

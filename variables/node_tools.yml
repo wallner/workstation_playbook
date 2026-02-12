@@ -1,10 +1,17 @@
 ---
-# vars/node_tools.yml
+# Node.js global CLI tools installed into isolated XDG-compliant directories.
+# Each tool gets its own prefix under install_root to avoid dependency conflicts.
+# Binaries are symlinked into xdg_bin_home so they appear on $PATH.
+
+# Base paths (derived from the 'user' variable in configuration.yml)
 user_home: "/home/{{ user }}"
 xdg_data_home: "{{ user_home }}/.local/share"
 xdg_bin_home: "{{ user_home }}/.local/bin"
 install_root: "{{ xdg_data_home }}/node_tools"
 
+# Tools to install. Each entry needs:
+#   name  - npm package name (as you would pass to `npm install -g`)
+#   bin   - binary name used for the symlink and install subdirectory
 tools:
   - { name: "@google/gemini-cli", bin: "gemini" }
   - { name: "@mermaid-js/mermaid-cli", bin: "mmdc" }

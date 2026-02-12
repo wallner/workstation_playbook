@@ -53,6 +53,16 @@ To validate changes or test the playbook on a fresh Fedora instance without affe
 - **Node Tools**: Update `variables/node_tools.yml` to change the list of global NPM packages.
 - **Hostname**: Adjust the `hostname` variable in `variables/configuration.yml`.
 
+## Linting
+
+The project includes an `.ansible-lint` configuration with the `production` profile. To check the playbook for best-practice violations:
+
+```bash
+ansible-lint
+```
+
+`ansible-lint` is installed automatically as part of the development packages (`python3-ansible-lint`).
+
 ## Selective Execution
 
 The playbook is tagged to allow running specific sections independently. This is useful for updates or testing specific components. Use the `--tags` flag with `ansible-playbook`:

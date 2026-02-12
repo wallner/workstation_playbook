@@ -1,4 +1,7 @@
 ---
+# DNF packages grouped by purpose. Referenced in tasks/packages.yml.
+
+# Shell utilities, CLI tools, and system services
 packages_system:
   - awscli
   - bat
@@ -38,6 +41,7 @@ packages_system:
   - zsh-autosuggestions
   - zsh-syntax-highlighting
 
+# GNOME desktop apps, media codecs, games, and graphical utilities
 packages_desktop:
   - aisleriot
   - aspell-de
@@ -108,7 +112,9 @@ packages_desktop:
   - transmission-gtk
   - wesnoth
 
+# Compilers, language runtimes, container/VM tools, editors, and dev libraries
 packages_development:
+  - python3-ansible-lint
   - autoconf
   - awesome-vim-colorschemes
   - buildah

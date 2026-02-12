@@ -1,3 +1,6 @@
 ---
-### Operating systems
+# Version pins and OS-level facts used across the playbook.
+
+# Detected automatically via Ansible facts (e.g. "41", "42").
+# Used to construct version-specific RPM URLs for RPMFusion, ProtonVPN, etc.
 fedora_current: "{{ ansible_distribution_major_version }}"

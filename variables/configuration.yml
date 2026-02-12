@@ -1,3 +1,8 @@
 ---
+# General workstation configuration: identity and host settings.
+
+# The UNIX user running the playbook. Resolved from the environment at runtime.
 user: "{{ lookup('env', 'USER') }}"
+
+# Fully qualified hostname to set via ansible.builtin.hostname.
 hostname: beagle.balumba.org
