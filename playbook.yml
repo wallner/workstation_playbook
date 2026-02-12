@@ -8,6 +8,9 @@
     - variables/node_tools.yml
     - variables/packages.yml
   tasks:
+    - name: Run pre-flight checks
+      ansible.builtin.import_tasks: tasks/pre-flight.yml
+      tags: [preflight]
     - name: Install python DNF bindings (bootstrap)
       ansible.builtin.command: dnf install -y python3-dnf
       register: dnf_bootstrap
@@ -28,9 +31,6 @@
       ansible.builtin.import_tasks: tasks/proton.yml
       become: true
       tags: [proton]
-    - name: Import font setup tasks
-      ansible.builtin.import_tasks: tasks/font-setup.yml
-      tags: [fonts]
     - name: Import Java tasks
       ansible.builtin.import_tasks: tasks/java.yml
       become: true
@@ -53,10 +53,6 @@
     - name: Import dotfiles tasks
       ansible.builtin.import_tasks: tasks/dotfiles.yml
       tags: [dotfiles]
-    - name: Import sysctl tasks
-      ansible.builtin.import_tasks: tasks/sysctl.yml
-      become: true
-      tags: [sysctl]
     - name: Import Node.js package tasks
       ansible.builtin.import_tasks: tasks/node_packages.yml
       tags: [node_packages]

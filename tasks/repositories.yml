@@ -4,8 +4,8 @@
     state: present
     disable_gpg_check: true
     name:
-      - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm
-      - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm
+      - "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm"
+      - "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm"
 
 - name: Enable various COPRs
   community.general.copr:
@@ -14,6 +14,8 @@
     - atim/starship
     - mikelo2/gh
     - pgdev/ghostty
+    - adrienverge/some-nice-fonts
+    - aquacash5/nerd-fonts
 
 - name: Add Google Cloud CLI repository
   ansible.builtin.yum_repository:

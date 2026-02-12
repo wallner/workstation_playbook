@@ -153,3 +153,32 @@ packages_development:
   - wireshark
   - yarnpkg
   - zeal
+
+# Fonts (System-wide installation)
+packages_fonts:
+  - cascadia-fonts-all
+  - cascadia-code-nerd-fonts
+  - cascadia-mono-nerd-fonts
+  - jetbrains-mono-fonts-all
+  - jet-brains-mono-nerd-fonts
+  - fontawesome-fonts
+  - fontawesome-fonts-web
+  - powerline-fonts
+  - some-nice-fonts
+  - source-code-pro-nerd-fonts
+  - terminus-fonts-console
+  - terminus-fonts
+  - terminus-nerd-fonts
+
+# Flatpak SDK extensions
+packages_flatpak_sdk:
+  - org.freedesktop.Sdk.Extension.golang
+  - org.freedesktop.Sdk.Extension.node24
+  - org.freedesktop.Sdk.Extension.node22
+  - org.freedesktop.Sdk.Extension.node20
+  - org.freedesktop.Sdk.Extension.openjdk
+  - org.freedesktop.Sdk.Extension.openjdk25
+  - org.freedesktop.Sdk.Extension.openjdk21
+  - org.freedesktop.Sdk.Extension.openjdk17
+  - org.freedesktop.Sdk.Extension.rust-stable
+  - org.freedesktop.Sdk.Extension.typescript

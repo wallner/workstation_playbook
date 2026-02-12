@@ -22,10 +22,6 @@
       community.general.dconf:
         key: "/org/gnome/GPaste/make-password"
         value: "''"
-    - name: Set monoface font to 'Adwaita Mono' (The default)
-      community.general.dconf:
-        key: "/org/gnome/desktop/interface/monospace-font-name"
-        value: '"Adwaita Mono 11"'
     - name: Set font hinting to slight
       community.general.dconf:
         key: "/org/gnome/desktop/interface/font-hinting"

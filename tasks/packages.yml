@@ -19,3 +19,8 @@
   ansible.builtin.dnf:
     state: present
     name: "{{ packages_development }}"
+
+- name: Install System Fonts
+  ansible.builtin.dnf:
+    state: present
+    name: "{{ packages_fonts }}"
