@@ -53,6 +53,23 @@ To validate changes or test the playbook on a fresh Fedora instance without affe
 - **Node Tools**: Update `variables/node_tools.yml` to change the list of global NPM packages.
 - **Hostname**: Adjust the `hostname` variable in `variables/configuration.yml`.
 
+## Selective Execution
+
+The playbook is tagged to allow running specific sections independently. This is useful for updates or testing specific components. Use the `--tags` flag with `ansible-playbook`:
+
+```bash
+ansible-playbook playbook.yml --tags <tag_name>
+```
+
+**Commonly used tags:**
+- `node_packages`: Install and update isolated Node.js tools (Gemini, Claude, etc.).
+- `packages`: Install system, desktop, and development RPM packages.
+- `cargo` / `go`: Install Rust or Go packages.
+- `flatpak`: Configure Flathub and install Flatpak applications.
+- `dotfiles`: Deploy and restow configuration files.
+- `gnome`: Configure GNOME settings and extensions.
+- `directories`: Prepare the standard user directory layout.
+
 ## License
 
 This project is open-source and available under the MIT License.

@@ -13,24 +13,38 @@
       changed_when: "'Nothing to do' not in dnf_install_result.stdout"
       become: true
     - ansible.builtin.import_tasks: tasks/user-directories.yml
+      tags: [directories]
     - ansible.builtin.import_tasks: tasks/repositories.yml
       become: true
+      tags: [repositories]
     - ansible.builtin.import_tasks: tasks/packages.yml
       become: true
+      tags: [packages]
     - ansible.builtin.import_tasks: tasks/proton.yml
       become: true
+      tags: [proton]
     - ansible.builtin.import_tasks: tasks/font-setup.yml
+      tags: [fonts]
     - ansible.builtin.import_tasks: tasks/java.yml
       become: true
+      tags: [java]
     - ansible.builtin.import_tasks: tasks/cargo_packages.yml
+      tags: [cargo]
     - ansible.builtin.import_tasks: tasks/go_packages.yml
+      tags: [go]
     - ansible.builtin.import_tasks: tasks/flatpack.yml
+      tags: [flatpak]
     - ansible.builtin.import_tasks: tasks/syncthing.yml
+      tags: [syncthing]
     - ansible.builtin.import_tasks: tasks/configure-gnome.yml
+      tags: [gnome]
     - ansible.builtin.import_tasks: tasks/dotfiles.yml
+      tags: [dotfiles]
     - ansible.builtin.import_tasks: tasks/sysctl.yml
       become: true
+      tags: [sysctl]
     - ansible.builtin.import_tasks: tasks/node_packages.yml
+      tags: [node_packages]
     - name: set the hostname
       ansible.builtin.hostname: name={{ hostname }}
       become: true
