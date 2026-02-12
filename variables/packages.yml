@@ -175,6 +175,7 @@ packages_fonts:
 packages_cargo:
   - tod
   - eza
+  - vivid
 
 # Flatpak SDK extensions
 packages_flatpak_sdk:
