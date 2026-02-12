@@ -1,6 +1,6 @@
 ---
 - name: Ensure XDG directories exist
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     mode: '0755'
@@ -18,7 +18,7 @@
   loop: "{{ tools }}"
 
 - name: Symlink binaries to ~/.local/bin
-  file:
+  ansible.builtin.file:
     src: "{{ install_root }}/{{ item.bin }}/bin/{{ item.bin }}"
     dest: "{{ xdg_bin_home }}/{{ item.bin }}"
     state: link

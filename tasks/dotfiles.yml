@@ -1,26 +1,28 @@
 ---
 - name: Prepare stow directories
-  file:
+  ansible.builtin.file:
     path: "/home/{{ user }}/depot/"
     state: directory
     mode: '0755'
     owner: "{{ user }}"
 - name: Check out dotfiles
-  git: repo=https://github.com/wallner/dotfiles.git dest="/home/{{ user }}/depot/dotfiles"
+  ansible.builtin.git:
+    repo: https://github.com/wallner/dotfiles.git
+    dest: "/home/{{ user }}/depot/dotfiles"
 
 - name: Run stow
-  shell: "stow --dir /home/{{ user }}/depot --target /home/{{ user }} dotfiles --verbose=2"
+  ansible.builtin.shell: "stow --dir /home/{{ user }}/depot --target /home/{{ user }} dotfiles --verbose=2"
   register: result
   changed_when: 'result.stderr is search("LINK: ") or result.stderr is search("UNLINK: ")'
 
 - name: Ensure .gemini directory exists
-  file:
+  ansible.builtin.file:
     path: "/home/{{ user }}/.gemini"
     state: directory
     mode: '0700'
 
 - name: Deploy Gemini config (if missing)
-  copy:
+  ansible.builtin.copy:
     dest: "/home/{{ user }}/.gemini/settings.json"
     force: no
     content: |
@@ -29,16 +31,17 @@
         "updateCheck": true
       }
 - name: fix permissions of .ssh/options
-  file: path=/home/{{ user }}/.ssh/config mode=0600
+  ansible.builtin.file:
+    path: "/home/{{ user }}/.ssh/config"
+    mode: '0600'
 - name: Generate the caches for 'bat'
-  shell: "bat cache --build"
+  ansible.builtin.shell: "bat cache --build"
   register: result
   changed_when: false
 
 - name: configure theme watcher service to start at login using systemd
-  systemd_service:
+  ansible.builtin.systemd_service:
     name: theme-watcher
     scope: user
     enabled: true
     state: started
-

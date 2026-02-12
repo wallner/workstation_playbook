@@ -1,10 +1,12 @@
 ---
 - name: install syncthing
-  dnf: name=syncthing state=present
+  ansible.builtin.dnf:
+    name: syncthing
+    state: present
   become: true
 
 - name: configure syncthing to start at login using systemd
-  systemd_service:
+  ansible.builtin.systemd_service:
     name: syncthing
     scope: user
     enabled: true

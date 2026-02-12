@@ -1,6 +1,6 @@
 ---
 - name: install the rpmfusion repo packages
-  dnf:
+  ansible.builtin.dnf:
     state: present
     disable_gpg_check: true
     name:
@@ -11,12 +11,12 @@
   community.general.copr:
     name: "{{ item }}"
   loop:
-    - atim/starship 
+    - atim/starship
     - mikelo2/gh
     - pgdev/ghostty
 
 - name: Add Google Cloud CLI repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: google-cloud-cli
     description: Google Cloud CLI
     baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64
@@ -26,7 +26,7 @@
     gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
 - name: Add Insync repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: insync
     description: Insync Repo
     baseurl: http://yum.insync.io/fedora/$releasever/
@@ -36,7 +36,7 @@
     metadata_expire: 120m
 
 - name: Add Google Chrome repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: google-chrome
     description: Google Chrome
     baseurl: http://dl.google.com/linux/chrome/rpm/stable/x86_64
@@ -45,7 +45,7 @@
     gpgkey: https://dl.google.com/linux/linux_signing_key.pub
 
 - name: Add GitHub Desktop (ShiftKey) repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: shiftkey_desktop
     description: GitHub Desktop (ShiftKey)
     baseurl: https://packagecloud.io/shiftkey/desktop/fedora/$releasever/$basearch
@@ -56,4 +56,3 @@
     sslverify: yes
     sslcacert: /etc/pki/tls/certs/ca-bundle.crt
     metadata_expire: 300
-

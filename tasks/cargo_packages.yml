@@ -1,6 +1,8 @@
 ---
 - name: install cargo
-  dnf: name=cargo state=present
+  ansible.builtin.dnf:
+    name: cargo
+    state: present
   become: true
 - name: install tod todoist client
   community.general.cargo:

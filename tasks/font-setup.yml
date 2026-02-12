@@ -5,14 +5,16 @@
   become: true
   with_list:
   - adrienverge/some-nice-fonts
-  - aquacash5/nerd-fonts 
+  - aquacash5/nerd-fonts
 
 - name: install freetype-freeworld
-  dnf: name=freetype-freeworld state=present
+  ansible.builtin.dnf:
+    name: freetype-freeworld
+    state: present
   become: true
 
 - name: install fonts
-  dnf:
+  ansible.builtin.dnf:
     state: present
     name:
     - cascadia-fonts-all
@@ -31,4 +33,7 @@
   become: true
 
 - name: activate lcd default filter
-  lineinfile: 'dest="~/.Xresources" line="Xft.lcdfilter: lcddefault" create=yes'
+  ansible.builtin.lineinfile:
+    path: "~/.Xresources"
+    line: "Xft.lcdfilter: lcddefault"
+    create: yes
