@@ -6,3 +6,6 @@ user: "{{ lookup('env', 'USER') }}"
 
 # Fully qualified hostname to set via ansible.builtin.hostname.
 hostname: beagle.balumba.org
+
+# Default branch for Flatpak SDK extensions (e.g., 25.08)
+flatpak_sdk_branch: "25.08"

@@ -1,0 +1,6 @@
+---
+- name: Restart theme-watcher
+  ansible.builtin.systemd_service:
+    name: theme-watcher
+    scope: user
+    state: restarted

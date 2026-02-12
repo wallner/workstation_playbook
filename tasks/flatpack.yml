@@ -1,4 +1,6 @@
 ---
+# Flatpak configuration and application deployment
+
 - name: Add the flathub flatpak repository remote to the user installation
   community.general.flatpak_remote:
     name: flathub
@@ -23,18 +25,14 @@
       - org.gnome.World.Secrets
       - us.zoom.Zoom
 
+- name: Get installed Flatpak SDK extensions
+  ansible.builtin.command: "flatpak list --user --runtime --columns=application,branch"
+  register: flatpak_installed_sdks
+  changed_when: false
+  check_mode: false
+
 - name: Install Flatpak SDK Extensions
-  ansible.builtin.command: "flatpak install --user -y --noninteractive flathub {{ item }}"
-  register: flatpak_sdk_result
-  changed_when: "'is already installed' not in flatpak_sdk_result.stderr"
-  loop:
-    - runtime/org.freedesktop.Sdk.Extension.golang/x86_64/{{ flatpak_sdk_branch }}
-    - runtime/org.freedesktop.Sdk.Extension.node24/x86_64/{{ flatpak_sdk_branch }}
-    - runtime/org.freedesktop.Sdk.Extension.node22/x86_64/{{ flatpak_sdk_branch }}
-    - runtime/org.freedesktop.Sdk.Extension.node20/x86_64/{{ flatpak_sdk_branch }}
-    - runtime/org.freedesktop.Sdk.Extension.openjdk/x86_64/{{ flatpak_sdk_branch }}
-    - runtime/org.freedesktop.Sdk.Extension.openjdk25/x86_64/{{ flatpak_sdk_branch }}
-    - runtime/org.freedesktop.Sdk.Extension.openjdk21/x86_64/{{ flatpak_sdk_branch }}
-    - runtime/org.freedesktop.Sdk.Extension.openjdk17/x86_64/{{ flatpak_sdk_branch }}
-    - runtime/org.freedesktop.Sdk.Extension.rust-stable/x86_64/{{ flatpak_sdk_branch }}
-    - runtime/org.freedesktop.Sdk.Extension.typescript/x86_64/{{ flatpak_sdk_branch }}
+  ansible.builtin.command: "flatpak install --user -y --noninteractive flathub {{ item }}/x86_64/{{ flatpak_sdk_branch }}"
+  loop: "{{ packages_flatpak_sdk }}"
+  # Check if application ID and branch are present in the output
+  when: "not (flatpak_installed_sdks.stdout is search(item ~ '\\s+' ~ flatpak_sdk_branch))"
