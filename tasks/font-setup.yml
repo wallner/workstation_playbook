@@ -3,9 +3,9 @@
   community.general.copr:
     name: "{{ item }}"
   become: true
-  with_list:
-  - adrienverge/some-nice-fonts
-  - aquacash5/nerd-fonts
+  loop:
+    - adrienverge/some-nice-fonts
+    - aquacash5/nerd-fonts
 
 - name: install freetype-freeworld
   ansible.builtin.dnf:

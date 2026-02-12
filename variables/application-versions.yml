@@ -4,3 +4,6 @@
 # Detected automatically via Ansible facts (e.g. "41", "42").
 # Used to construct version-specific RPM URLs for RPMFusion, ProtonVPN, etc.
 fedora_current: "{{ ansible_distribution_major_version }}"
+
+# Freedesktop SDK branch used for Flatpak SDK extensions (e.g. "25.08").
+flatpak_sdk_branch: "25.08"

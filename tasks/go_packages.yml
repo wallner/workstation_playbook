@@ -14,12 +14,14 @@
   ignore_errors: true
 
 - name: install a handful of go packages
-  ansible.builtin.shell: "go install {{ item }}"
+  ansible.builtin.command: "go install {{ item }}"
   environment:
     GOPATH: "/home/{{ user }}/workspace/golang"
     GOBIN: "/home/{{ user }}/workspace/golang/bin"
   register: go_install_result
-  changed_when: "go_install_result.stderr | length > 0"
+  changed_when: >
+    go_install_result.stderr is search("Downloading")
+    or go_install_result.stderr is search("linking")
   loop:
     - github.com/doronbehar/pistol/cmd/pistol@latest
     - github.com/remotemobprogramming/mob/v5@latest
