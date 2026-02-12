@@ -115,6 +115,7 @@ packages_desktop:
 # Compilers, language runtimes, container/VM tools, editors, and dev libraries
 packages_development:
   - python3-ansible-lint
+  - pre-commit
   - autoconf
   - awesome-vim-colorschemes
   - buildah

@@ -15,3 +15,8 @@ if [ -t 0 ]; then
 fi
 
 ansible-playbook $ANSIBLE_FLAGS playbook.yml -e "user=$TARGET_USER"
+
+# Install pre-commit hooks
+if command -v pre-commit &> /dev/null; then
+    pre-commit install
+fi
