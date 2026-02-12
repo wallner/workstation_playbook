@@ -1,0 +1,29 @@
+---
+# Pre-flight checks to ensure the environment meets the requirements
+
+- name: Check operating system
+  ansible.builtin.assert:
+    that:
+      - ansible_distribution == "Fedora"
+    fail_msg: "This playbook is designed for Fedora. Detected: {{ ansible_distribution }}"
+
+- name: Check required variables
+  ansible.builtin.assert:
+    that:
+      - user is defined
+      - hostname is defined
+    fail_msg: "Required variables 'user' or 'hostname' are missing."
+
+- name: Check available memory
+  ansible.builtin.assert:
+    that:
+      - ansible_memtotal_mb >= 3800
+    fail_msg: "At least 4GB of RAM is recommended. Detected: {{ ansible_memtotal_mb }} MB"
+
+- name: Check available disk space on /
+  ansible.builtin.assert:
+    that:
+      - (item.size_available > 10 * 1024 * 1024 * 1024)
+    fail_msg: "At least 10GB of free disk space is required on /."
+  loop: "{{ ansible_mounts }}"
+  when: item.mount == "/"

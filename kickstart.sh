@@ -16,7 +16,7 @@ fi
 
 ansible-playbook $ANSIBLE_FLAGS playbook.yml -e "user=$TARGET_USER"
 
-# Install pre-commit hooks
-if command -v pre-commit &> /dev/null; then
-    pre-commit install
+# Install pre-commit hooks (only if in a git repo and tool is available)
+if command -v pre-commit &> /dev/null && git rev-parse --is-inside-work-tree &> /dev/null; then
+    pre-commit install || echo "Warning: Pre-commit hooks could not be initialized (common in VM shared folders)."
 fi
