@@ -4,12 +4,10 @@
     name: cargo
     state: present
   become: true
-- name: Install tod todoist client
+
+- name: Install Rust/Cargo packages
   community.general.cargo:
-    name: tod
+    name: "{{ item }}"
     path: "/home/{{ user }}/.local"
     state: latest
-- name: Install eza, a modern replacement for ls
-  community.general.cargo:
-    name: eza
-    path: "/home/{{ user }}/.local"
+  loop: "{{ packages_cargo }}"

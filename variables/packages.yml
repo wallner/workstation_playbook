@@ -171,6 +171,11 @@ packages_fonts:
   - terminus-fonts
   - terminus-nerd-fonts
 
+# Rust / Cargo packages
+packages_cargo:
+  - tod
+  - eza
+
 # Flatpak SDK extensions
 packages_flatpak_sdk:
   - org.freedesktop.Sdk.Extension.golang
