@@ -4,21 +4,22 @@
     path: "{{ item }}"
     state: directory
     mode: '0755'
-
   loop:
     - "{{ install_root }}"
     - "{{ xdg_bin_home }}"
 
-- name: Install tools into isolated XDG subdirectories
+- name: Install tools into isolated XDG subdirectories (global-style)
   community.general.npm:
     name: "{{ item.name }}"
-    path: "{{ install_root }}/{{ item.bin }}"
     state: latest
+    global: true
+  environment:
+    NPM_CONFIG_PREFIX: "{{ install_root }}/{{ item.bin }}"
   loop: "{{ tools }}"
 
 - name: Symlink binaries to ~/.local/bin
   file:
-    src: "{{ install_root }}/{{ item.bin }}/node_modules/.bin/{{ item.bin }}"
+    src: "{{ install_root }}/{{ item.bin }}/bin/{{ item.bin }}"
     dest: "{{ xdg_bin_home }}/{{ item.bin }}"
     state: link
     force: yes
