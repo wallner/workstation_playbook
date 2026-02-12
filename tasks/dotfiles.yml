@@ -5,16 +5,17 @@
   ansible.builtin.file:
     path: "/home/{{ user }}/depot/"
     state: directory
-    mode: '0755'
+    mode: "0755"
     owner: "{{ user }}"
 
 - name: Check out dotfiles
   ansible.builtin.git:
     repo: https://github.com/wallner/dotfiles.git
     dest: "/home/{{ user }}/depot/dotfiles"
+    version: main
 
 - name: Run stow
-  ansible.builtin.shell: "stow --dir /home/{{ user }}/depot --target /home/{{ user }} dotfiles --verbose=2"
+  ansible.builtin.command: "stow --dir /home/{{ user }}/depot --target /home/{{ user }} dotfiles --verbose=2"
   register: result
   changed_when: 'result.stderr is search("LINK: ") or result.stderr is search("UNLINK: ")'
 
@@ -22,31 +23,32 @@
   ansible.builtin.file:
     path: "/home/{{ user }}/.gemini"
     state: directory
-    mode: '0700'
+    mode: "0700"
 
 - name: Deploy Gemini config (if missing)
   ansible.builtin.copy:
     dest: "/home/{{ user }}/.gemini/settings.json"
-    force: no
+    force: false
+    mode: "0600"
     content: |
       {
         "theme": "Default Light",
         "updateCheck": true
       }
 
-- name: fix permissions of .ssh/options
+- name: Fix permissions of .ssh/config
   ansible.builtin.file:
-    path: /home/{{ user }}/.ssh/config
-    mode: 0600
+    path: "/home/{{ user }}/.ssh/config"
+    mode: "0600"
 
 - name: Generate the caches for 'bat'
-  ansible.builtin.shell: "bat cache --build"
+  ansible.builtin.command: "bat cache --build"
   args:
     creates: "/home/{{ user }}/.cache/bat/themes.bin"
-  register: result
+  register: bat_result
   changed_when: false
 
-- name: configure theme watcher service to start at login using systemd
+- name: Configure theme watcher service to start at login using systemd
   ansible.builtin.systemd_service:
     name: theme-watcher
     scope: user

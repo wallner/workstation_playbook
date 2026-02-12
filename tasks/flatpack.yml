@@ -33,6 +33,7 @@
 
 - name: Install Flatpak SDK Extensions
   ansible.builtin.command: "flatpak install --user -y --noninteractive flathub {{ item }}/x86_64/{{ flatpak_sdk_branch }}"
+  changed_when: true
   loop: "{{ packages_flatpak_sdk }}"
   # Check if application ID and branch are present in the output
   when: "not (flatpak_installed_sdks.stdout is search(item ~ '\\s+' ~ flatpak_sdk_branch))"

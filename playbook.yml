@@ -8,7 +8,8 @@
     - variables/node_tools.yml
     - variables/packages.yml
   handlers:
-    - ansible.builtin.import_tasks: handlers/main.yml
+    - name: Import global handlers
+      ansible.builtin.import_tasks: handlers/main.yml
   tasks:
     - name: Run pre-flight checks
       ansible.builtin.import_tasks: tasks/pre-flight.yml
