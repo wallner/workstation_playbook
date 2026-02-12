@@ -9,5 +9,6 @@ tools:
   - { name: "@google/gemini-cli", bin: "gemini" }
   - { name: "@mermaid-js/mermaid-cli", bin: "mmdc" }
   - { name: "@anthropic-ai/claude-code", bin: "claude" }
+  - { name: "@marp-team/marp-cli", bin: "marp" }
   # - { name: "deno-bin", bin: "deno" }
   # - { name: "@salesforce/cli", bin: "sf" }
