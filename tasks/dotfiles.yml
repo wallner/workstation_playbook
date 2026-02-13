@@ -36,10 +36,15 @@
         "updateCheck": true
       }
 
-- name: Fix permissions of .ssh/config
+- name: Fix SSH directory and configuration permissions
   ansible.builtin.file:
-    path: "/home/{{ user }}/.ssh/config"
-    mode: "0600"
+    path: "/home/{{ user }}/.ssh/{{ item.path }}"
+    state: "{{ item.state | default('file') }}"
+    mode: "{{ item.mode }}"
+  loop:
+    - { path: "", state: "directory", mode: "0700" }
+    - { path: "sockets", state: "directory", mode: "0700" }
+    - { path: "config", mode: "0600" }
 
 - name: Generate the caches for 'bat'
   ansible.builtin.command: "bat cache --build"
