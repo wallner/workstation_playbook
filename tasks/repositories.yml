@@ -16,6 +16,7 @@
     - pgdev/ghostty
     - adrienverge/some-nice-fonts
     - aquacash5/nerd-fonts
+    - v8v88v8v88/helium
 
 - name: Add Google Cloud CLI repository
   ansible.builtin.yum_repository:
@@ -36,15 +37,6 @@
     gpgcheck: true
     gpgkey: https://d2t3ff60b2tol4.cloudfront.net/repomd.xml.key
     metadata_expire: 120m
-
-- name: Add Google Chrome repository
-  ansible.builtin.yum_repository:
-    name: google-chrome
-    description: Google Chrome
-    baseurl: http://dl.google.com/linux/chrome/rpm/stable/x86_64
-    enabled: true
-    gpgcheck: true
-    gpgkey: https://dl.google.com/linux/linux_signing_key.pub
 
 - name: Add GitHub Desktop (ShiftKey) repository
   ansible.builtin.yum_repository:

@@ -48,10 +48,13 @@ packages_desktop:
   - blackbox-terminal
   - calibre
   - cheese
+  - chromium
   - dconf-editor
   - deja-dup
   - drawing
   - epiphany
+  - fedora-chromium-config
+  - fedora-chromium-config-gnome
   - ffmpeg
   - five-or-more
   - foliate
@@ -72,7 +75,6 @@ packages_desktop:
   - gnome-sound-recorder
   - gnome-tetravex
   - gnome-tweak-tool
-  - google-chrome-stable
   - graphviz
   - gstreamer-ffmpeg
   - gstreamer1-libav
@@ -85,6 +87,7 @@ packages_desktop:
   - gstreamer1-plugins-ugly
   - gstreamer1-plugins-ugly-free
   - gstreamer1-vaapi
+  - helium
   - hunspell-de
   - iagno
   - ImageMagick
