@@ -38,8 +38,6 @@ packages_system:
   - xclip
   - zoxide
   - zsh
-  - zsh-autosuggestions
-  - zsh-syntax-highlighting
 
 # GNOME desktop apps, media codecs, games, and graphical utilities
 packages_desktop:
