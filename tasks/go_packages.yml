@@ -1,4 +1,6 @@
 ---
+# Go language installation and package management
+
 - name: Install Go language and docs
   ansible.builtin.dnf:
     state: present
@@ -13,7 +15,7 @@
   changed_when: false
   ignore_errors: true
 
-- name: Install a handful of Go packages
+- name: Install Go packages
   ansible.builtin.command: "go install {{ item }}"
   environment:
     GOPATH: "/home/{{ user }}/workspace/golang"
@@ -22,7 +24,4 @@
   changed_when: >
     go_install_result.stderr is search("Downloading")
     or go_install_result.stderr is search("linking")
-  loop:
-    - github.com/doronbehar/pistol/cmd/pistol@latest
-    - github.com/remotemobprogramming/mob/v5@latest
-    - github.com/vishen/go-chromecast@latest
+  loop: "{{ packages_go }}"

@@ -178,6 +178,12 @@ packages_cargo:
   - eza
   - vivid
 
+# Go packages
+packages_go:
+  - github.com/doronbehar/pistol/cmd/pistol@latest
+  - github.com/remotemobprogramming/mob/v5@latest
+  - github.com/vishen/go-chromecast@latest
+
 # Flatpak SDK extensions
 packages_flatpak_sdk:
   - org.freedesktop.Sdk.Extension.golang
