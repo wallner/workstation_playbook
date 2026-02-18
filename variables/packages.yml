@@ -197,7 +197,6 @@ packages_flatpak:
   - md.obsidian.Obsidian
   - org.gnome.World.Secrets
   - us.zoom.Zoom
-  - com.thincast.client
 
 # Flatpak SDK extensions
 packages_flatpak_sdk:
