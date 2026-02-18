@@ -185,6 +185,20 @@ packages_go:
   - github.com/remotemobprogramming/mob/v5@latest
   - github.com/vishen/go-chromecast@latest
 
+# Flatpak applications
+packages_flatpak:
+  - com.github.marhkb.Pods
+  - com.jeffser.Alpaca
+  - com.jetbrains.IntelliJ-IDEA-Ultimate
+  - com.mardojai.ForgeSparks
+  - com.rafaelmardojai.Blanket
+  - com.slack.Slack
+  - de.schmidhuberj.Flare
+  - md.obsidian.Obsidian
+  - org.gnome.World.Secrets
+  - us.zoom.Zoom
+  - com.thincast.client
+
 # Flatpak SDK extensions
 packages_flatpak_sdk:
   - org.freedesktop.Sdk.Extension.golang

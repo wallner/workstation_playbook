@@ -13,17 +13,7 @@
     remote: flathub
     state: present
     method: user
-    name:
-      - com.github.marhkb.Pods
-      - com.jeffser.Alpaca
-      - com.jetbrains.IntelliJ-IDEA-Ultimate
-      - com.mardojai.ForgeSparks
-      - com.rafaelmardojai.Blanket
-      - com.slack.Slack
-      - de.schmidhuberj.Flare
-      - md.obsidian.Obsidian
-      - org.gnome.World.Secrets
-      - us.zoom.Zoom
+    name: "{{ packages_flatpak }}"
 
 - name: Get installed Flatpak SDK extensions
   ansible.builtin.command: "flatpak list --user --runtime --columns=application,branch"
