@@ -177,6 +177,7 @@ packages_cargo:
   - tod
   - eza
   - vivid
+  - sheldon
 
 # Go packages
 packages_go:
