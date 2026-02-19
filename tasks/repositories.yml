@@ -1,4 +1,6 @@
 ---
+# Repository configuration for DNF, Yum, and COPR
+
 - name: Install the RPMFusion repo packages
   ansible.builtin.dnf:
     state: present
@@ -7,46 +9,22 @@
       - "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_current }}.noarch.rpm"
       - "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_current }}.noarch.rpm"
 
-- name: Enable various COPRs
+- name: Enable COPR repositories
   community.general.copr:
     name: "{{ item }}"
-  loop:
-    - atim/starship
-    - mikelo2/gh
-    - pgdev/ghostty
-    - adrienverge/some-nice-fonts
-    - aquacash5/nerd-fonts
-    - v8v88v8v88/helium
+    state: enabled
+  loop: "{{ repositories_copr }}"
 
-- name: Add Google Cloud CLI repository
+- name: Add third-party Yum repositories
   ansible.builtin.yum_repository:
-    name: google-cloud-cli
-    description: Google Cloud CLI
-    baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
+    baseurl: "{{ item.baseurl }}"
     enabled: true
-    gpgcheck: true
-    repo_gpgcheck: false
-    gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-
-- name: Add Insync repository
-  ansible.builtin.yum_repository:
-    name: insync
-    description: Insync Repo
-    baseurl: http://yum.insync.io/fedora/$releasever/
-    enabled: true
-    gpgcheck: true
-    gpgkey: https://d2t3ff60b2tol4.cloudfront.net/repomd.xml.key
-    metadata_expire: 120m
-
-- name: Add GitHub Desktop (ShiftKey) repository
-  ansible.builtin.yum_repository:
-    name: shiftkey_desktop
-    description: GitHub Desktop (ShiftKey)
-    baseurl: https://packagecloud.io/shiftkey/desktop/fedora/$releasever/$basearch
-    enabled: true
-    gpgcheck: true
-    repo_gpgcheck: true
-    gpgkey: https://packagecloud.io/shiftkey/desktop/gpgkey
-    sslverify: true
-    sslcacert: /etc/pki/tls/certs/ca-bundle.crt
-    metadata_expire: 300
+    gpgcheck: "{{ item.gpgcheck | default(true) }}"
+    repo_gpgcheck: "{{ item.repo_gpgcheck | default(false) }}"
+    gpgkey: "{{ item.gpgkey }}"
+    sslverify: "{{ item.sslverify | default(omit) }}"
+    sslcacert: "{{ item.sslcacert | default(omit) }}"
+    metadata_expire: "{{ item.metadata_expire | default(omit) }}"
+  loop: "{{ repositories_yum }}"

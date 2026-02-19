@@ -201,13 +201,5 @@ packages_flatpak:
 
 # Flatpak SDK extensions
 packages_flatpak_sdk:
-  - org.freedesktop.Sdk.Extension.golang
-  - org.freedesktop.Sdk.Extension.node24
-  - org.freedesktop.Sdk.Extension.node22
-  - org.freedesktop.Sdk.Extension.node20
-  - org.freedesktop.Sdk.Extension.openjdk
-  - org.freedesktop.Sdk.Extension.openjdk25
-  - org.freedesktop.Sdk.Extension.openjdk21
-  - org.freedesktop.Sdk.Extension.openjdk17
-  - org.freedesktop.Sdk.Extension.rust-stable
+# ... (existing entries)
   - org.freedesktop.Sdk.Extension.typescript

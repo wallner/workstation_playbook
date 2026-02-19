@@ -1,0 +1,34 @@
+---
+# Repository lists and configurations. Referenced in tasks/repositories.yml.
+
+# COPR repositories to enable
+repositories_copr:
+  - atim/starship
+  - mikelo2/gh
+  - pgdev/ghostty
+  - adrienverge/some-nice-fonts
+  - aquacash5/nerd-fonts
+  - v8v88v8v88/helium
+
+# Third-party Yum/DNF repositories
+repositories_yum:
+  - name: google-cloud-cli
+    description: Google Cloud CLI
+    baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64
+    repo_gpgcheck: false
+    gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+
+  - name: insync
+    description: Insync Repo
+    baseurl: "http://yum.insync.io/fedora/{{ ansible_distribution_major_version }}/"
+    gpgkey: https://d2t3ff60b2tol4.cloudfront.net/repomd.xml.key
+    metadata_expire: 120m
+
+  - name: shiftkey_desktop
+    description: GitHub Desktop (ShiftKey)
+    baseurl: "https://packagecloud.io/shiftkey/desktop/fedora/{{ ansible_distribution_major_version }}/{{ ansible_architecture }}"
+    repo_gpgcheck: true
+    gpgkey: https://packagecloud.io/shiftkey/desktop/gpgkey
+    sslverify: true
+    sslcacert: /etc/pki/tls/certs/ca-bundle.crt
+    metadata_expire: 300
