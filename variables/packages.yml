@@ -3,6 +3,7 @@
 
 # Shell utilities, CLI tools, and system services
 packages_system:
+  - atool
   - awscli
   - bat
   - chafa
