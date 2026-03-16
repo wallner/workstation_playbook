@@ -2,7 +2,7 @@
 # Repository configuration for DNF, Yum, and COPR
 
 - name: Install the RPMFusion repo packages
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     state: present
     disable_gpg_check: true
     name:
@@ -15,6 +15,26 @@
     state: enabled
   loop: "{{ repositories_copr }}"
 
+- name: Download GPG keys for third-party repositories
+  ansible.builtin.get_url:
+    url: "{{ item.gpgkey }}"
+    dest: "/etc/pki/rpm-gpg/RPM-GPG-KEY-{{ item.name }}"
+    mode: "0644"
+  loop: "{{ repositories_yum }}"
+  when: item.gpgkey is defined
+  become: true
+
+- name: Import GPG keys for third-party repositories into RPM keyring  # noqa: command-instead-of-module
+  # ansible.builtin.rpm_key stores keys under the full 40-char fingerprint, but DNF5
+  # looks up keys by the short 8-char key ID — causing gpgcheck failures. rpm --import
+  # directly uses the traditional short-ID format that DNF5 expects.
+  ansible.builtin.command:
+    cmd: rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-{{ item.name }}
+  loop: "{{ repositories_yum }}"
+  when: item.gpgkey is defined
+  changed_when: false
+  become: true
+
 - name: Add third-party Yum repositories
   ansible.builtin.yum_repository:
     name: "{{ item.name }}"
@@ -23,7 +43,7 @@
     enabled: true
     gpgcheck: "{{ item.gpgcheck | default(true) }}"
     repo_gpgcheck: "{{ item.repo_gpgcheck | default(false) }}"
-    gpgkey: "{{ item.gpgkey }}"
+    gpgkey: "{{ 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-' + item.name if item.gpgkey is defined else omit }}"
     sslverify: "{{ item.sslverify | default(omit) }}"
     sslcacert: "{{ item.sslcacert | default(omit) }}"
     metadata_expire: "{{ item.metadata_expire | default(omit) }}"
