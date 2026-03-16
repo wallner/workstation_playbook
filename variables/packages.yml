@@ -74,6 +74,8 @@ packages_desktop:
   - gnome-sound-recorder
   - gnome-tetravex
   - gnome-tweak-tool
+  - google-chrome-stable
+  - antigravity
   - graphviz
   - gstreamer-ffmpeg
   - gstreamer1-libav
