@@ -15,8 +15,8 @@
     - name: Run pre-flight checks
       ansible.builtin.import_tasks: tasks/pre-flight.yml
       tags: [preflight]
-    - name: Install python DNF bindings (bootstrap)
-      ansible.builtin.command: dnf install -y python3-dnf
+    - name: Install python DNF5 bindings (bootstrap)
+      ansible.builtin.command: dnf install -y python3-libdnf5
       register: dnf_bootstrap
       changed_when: "'Nothing to do' not in dnf_bootstrap.stdout"
       become: true

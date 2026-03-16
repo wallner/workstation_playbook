@@ -73,12 +73,11 @@ packages_desktop:
   - gnome-shell-extension-gpaste
   - gnome-sound-recorder
   - gnome-tetravex
-  - gnome-tweak-tool
+  - gnome-tweaks
   - google-chrome-stable
   - antigravity
   - graphviz
-  - gstreamer-ffmpeg
-  - gstreamer1-libav
+  - gstreamer1-plugin-libav
   - gstreamer1-plugins-bad-free
   - gstreamer1-plugins-bad-free-extras
   - gstreamer1-plugins-bad-freeworld
@@ -93,7 +92,7 @@ packages_desktop:
   - iagno
   - ImageMagick
   - inkscape
-  - intel-gpu-tools
+  - igt-gpu-tools
   - intel-media-driver
   - keepassxc
   - libavcodec-freeworld

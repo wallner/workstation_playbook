@@ -1,26 +1,26 @@
 ---
 - name: Upgrade all packages  # noqa: package-latest
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     name: "*"
     state: latest
   tags: [never, upgrade]
 
 - name: Install System and Shell Utilities
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     state: present
     name: "{{ packages_system }}"
 
 - name: Install Desktop, Media, and GUI Applications
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     state: present
     name: "{{ packages_desktop }}"
 
 - name: Install Development, Virtualization, and Container Tools
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     state: present
     name: "{{ packages_development }}"
 
 - name: Install System Fonts
-  ansible.builtin.dnf:
+  ansible.builtin.dnf5:
     state: present
     name: "{{ packages_fonts }}"
