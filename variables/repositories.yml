@@ -4,7 +4,6 @@
 # COPR repositories to enable
 repositories_copr:
   - atim/starship
-  - mikelo2/gh
   - pgdev/ghostty
   - adrienverge/some-nice-fonts
   - aquacash5/nerd-fonts
@@ -33,12 +32,3 @@ repositories_yum:
     description: Google Antigravity RPM Repository
     baseurl: https://us-central1-yum.pkg.dev/projects/antigravity-auto-updater-dev/antigravity-rpm
     gpgcheck: false
-
-  - name: shiftkey_desktop
-    description: GitHub Desktop (ShiftKey)
-    baseurl: "https://packagecloud.io/shiftkey/desktop/fedora/{{ ansible_distribution_major_version }}/{{ ansible_architecture }}"
-    repo_gpgcheck: true
-    gpgkey: https://packagecloud.io/shiftkey/desktop/gpgkey
-    sslverify: true
-    sslcacert: /etc/pki/tls/certs/ca-bundle.crt
-    metadata_expire: 300
