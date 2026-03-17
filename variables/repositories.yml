@@ -14,7 +14,6 @@ repositories_yum:
   - name: google-cloud-cli
     description: Google Cloud CLI
     baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64
-    repo_gpgcheck: false
     gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
   - name: insync
@@ -31,4 +30,4 @@ repositories_yum:
   - name: google-antigravity
     description: Google Antigravity RPM Repository
     baseurl: https://us-central1-yum.pkg.dev/projects/antigravity-auto-updater-dev/antigravity-rpm
-    gpgcheck: false
+    gpgkey: https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg
