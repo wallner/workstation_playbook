@@ -21,13 +21,3 @@ repositories_yum:
     baseurl: "http://yum.insync.io/fedora/{{ ansible_distribution_major_version }}/"
     gpgkey: https://d2t3ff60b2tol4.cloudfront.net/repomd.xml.key
     metadata_expire: 120m
-
-  - name: google-chrome
-    description: Google Chrome
-    baseurl: http://dl.google.com/linux/chrome/rpm/stable/x86_64
-    gpgkey: https://dl.google.com/linux/linux_signing_key.pub
-
-  - name: google-antigravity
-    description: Google Antigravity RPM Repository
-    baseurl: https://us-central1-yum.pkg.dev/projects/antigravity-auto-updater-dev/antigravity-rpm
-    gpgkey: https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg
